@@ -3,7 +3,7 @@
 	<li class="birthday active"><a href="#"><?=lang('tabs.birthday')?></a></li>
 	<li class="animals"><a href="#"><?=lang('tabs.animals')?></a></li>
 	<li class="planetes"><a href="#"><?=lang('tabs.planetes')?></a></li>
-	<li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?></a></li>
+<!-- 	<li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?></a></li> -->
 </ul>
 <div class="result">
 	<div class="tab birthday">
