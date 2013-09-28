@@ -1,0 +1,16 @@
+/* this line ensures we are not getting white border around main content */
+@page 			{margin: 0px; } 
+body				{background-color:#5675b9;margin:0px;font-family: Helvetica,Arial, "MS Trebuchet", sans-serif;font-size:20px;}
+
+h3					{color:#ed1e24;margin-top:20px;}
+
+.header			{width:700px;margin:0px auto;height:187px;}
+.content		{width:680px;margin:0px auto;background-color:#fff;height:800px;padding:10px;}
+
+.main				{font-size: 0.75em;}
+
+.top				{text-transform: uppercase;color:#5675b9;}
+.top div		{margin:10px 0px;width:100%;border-bottom:2px dotted #5675b9;}
+
+.footer			{font-size: 0.5em;color:#fff;width:700px;margin:5px auto;text-align: center;}
+.footer a		{color:#ccc;font-weight: bold;text-decoration: none;}

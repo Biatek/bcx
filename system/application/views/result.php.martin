@@ -1,0 +1,40 @@
+<?php if ($calculate) { ?>
+  <?php // only display this result if there is at least one person with specified name ?>
+ 	<?php if ($persons_count > 1) { ?>
+	  <strong><?=lang('result.total.years')?><?=$total_years?>.</strong><br />
+	  <strong><?=lang('result.total.days')?><?=$total_days?>.</strong><br />
+	  <strong><?=lang('result.birthday.on')?><?=$birthday?>, <br> 
+    <?=lang('result.which.is')?> <?=$birthday_delta?> <?=lang('result.days')?>.</strong>
+         <?php } else { ?>
+	       <strong><?=lang('result.one.person')?></strong>       
+ 	<?php } ?>	
+    <br>  <br> 
+  <?php foreach ($persons as $person) { ?>
+		<?php if ($person['name']) { ?>
+			<?php // if there is at least one persons with specified name, set the display result to TRUE ?>
+			<?php $display_result = TRUE; ?>
+			<strong><?=$person['name']?> <?=lang('result.is')?> <?=$person['years']?> <?=lang('result.old')?>.   <br>
+			<?=lang('result.thatis')?> <?=$person['months']?> <?=lang('result.months')?>  <br>  
+      <?=lang('result.or')?> <?=$person['weeks']?> <?=lang('result.weeks')?>  <br> 
+      <?=lang('result.or')?> <?=$person['days']?> <?=lang('result.days')?>.  <br>
+			<br />
+		<?php } ?>
+	<?php } ?>                  
+  <div class="start-over"><span id="start-over"><?=lang('result.start.over')?></span></div>
+	<div class="messages">
+		<?php foreach ($persons as $person) { ?>
+			<?php if ($person['name'] && array_key_exists('messages', $person)) { ?>
+				<!-- persons messages -->
+				<?php foreach ($person['messages'] as $message) { ?>
+					<p><?php print str_replace('@name', $person['name'], $message); ?></p>
+				<?php } ?>
+				<!-- end persons messages -->
+			<?php } ?>
+		<?php } ?>
+	</div>
+<?php } else { ?>
+	<div class="no-person">
+		<strong><?=lang('result.no.person')?></strong>
+	</div>
+<?php } ?>
+          

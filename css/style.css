@@ -1,0 +1,165 @@
+body							{margin:0px;padding:0px;color:#eee;background:url('images/footer_bg.jpg');}
+
+button						{background-color: transparent;border-style:none;cursor:pointer;}
+
+a									{color:#000;font-weight:bold;text-decoration: none;}
+a:hover						{text-decoration: underline;}
+a img							{border:none;}
+
+table.calculator                   {background-color: inherit;} 
+table.calculator .label            {background-color: inherit;}
+table.calculator .title             {margin-left:10px;}
+
+h3.form-header    {margin:0px 0px 20px 0px;padding-bottom:10px;background:url('images/blue_divider.jpg') repeat-x center bottom;}
+
+#wrapper					{margin:0px auto;}
+
+#left							{width:170px;min-height:899px;background-image:url('images/left.png');float:left;}
+#content-wrapper	{width:747px;float:left;margin:0px;padding:0px;}
+#header						{height:273px;background:url('images/header_bg.png');}
+#header-inner     {height:273px;width:900px;margin:0px auto;background:url('images/header.png') no-repeat center center;}
+#header-inner a   {display: block;width: 100%;height: 100%;}
+#top              {position:fixed;z-index:1000;background-color:rgba(204,243,204,.95);height:60px;top:0;left:0;width:100%;box-shadow: 0px 3px 10px #666;}
+#top-inner        {height:60px;width:900px;margin:0px auto;overflow: hidden;text-shadow: 1px 1px 1px #fff;color:#99cc99;font-size:1.2em;}
+#top-inner a      {color:#696;display:inline-block;height:44px;}
+#top-inner .home  {background:url('images/home_icon.png') no-repeat left center;}
+#top-inner .facebook  {background:url('images/facebook_icon.png') no-repeat left center;}
+
+#content					{background-color:#7890c7;padding:20px 0px 30px 0px;}
+#content-inner    {width:900px;margin:0px auto;}
+
+#right            {float:right;width:205px;padding:10px;margin:0px 0px 20px 20px;border-radius: 5px;background:rgb(204,234,204);color:#000;}
+#right time       {font-size: 0.75em;font-style: italic;}
+#right h3         {color:#6699cc;text-shadow: 1px 1px 1px #fff;margin-top:5px;background:url('images/green_divider.jpg') repeat-x center bottom;padding-bottom:17px;}
+
+#result						{width:655px;float:left;color:#000;}
+
+#date-choser			{float:left;}
+#buttons					{float:right;margin-top:20px;}
+
+/*
+button.more       {display:block;background:url('images/button_add.png') no-repeat center 5px;width:270px;height:30px;color:#fff;text-shadow: -1px 0px 1px #999;float:left;margin-top:20px;}
+
+button.calculate	{display:block;background:url('images/button_calc.png') no-repeat center 10px;width:220px;height:60px;color:#fff;text-shadow: -1px 0px 1px #999;text-transform: uppercase;float:left;font-size: 1.25em;margin-left:50px;}
+*/
+table.calculator	{float:left;}
+table.calculator .name        {float:left;}
+table.calculator .datefields  {float:left;}
+table.calculator .datefield   {float:left;}
+
+#calculator       {width:655px;float:left;}
+
+#date-choser table  {width:100%;}
+#date-choser .label		{font-size:1em;text-transform: uppercase;}
+#date-choser input[type="text"]		{width:200px;}
+#date-choser input    {font-size:1.2em;width:150px;}
+#date-choser select   {font-size:1.2em;width:120px;margin-left:10px;}
+
+.reset            {float: left;margin-top:20px;}
+.reset a          {color:#fff;font-size:0.75em;}
+
+
+.result						{width:615px;padding:20px;margin:0px 0px 20px;background:rgba(204,234,204,.9);border-radius: 0px 5px;}
+
+.invisible				{display:none;}
+
+.description			{font-size: 0.7em;font-weight: normal;font-style: italic;}
+
+.start-over				{margin-top:20px;text-align: right;font-weight: bold;}
+
+/*
+ul.tabs						{margin:20px 0px 0px 0px;padding:0px 0px 0px 20px;height:30px;}
+ul.tabs li				{display:inline;margin:0px 10px;list-style-type: none;padding:5px 20px;height:20px;background:rgba(204,234,204,.9);border-radius: 5px;cursor: pointer;}
+*/
+.result .animals,.result .planetes, .result .celebratenow					{display:none;}
+
+#start-over				{cursor:pointer;}
+
+#flags						{float: right;margin-top:20px;}
+
+#top-inner-left   {float:left;margin-top:0px;}
+#top-inner-left a {padding:20px 20px 0px 50px;}
+
+#footer           {clear:both;}
+#footer-inner     {width:900px;margin:0px auto;}
+#footer .box      {background:#99cc99;border-radius: 5px;min-height:100px;margin:10px;float:left;padding:10px;color:#000;box-shadow: 3px 3px 10px #666;}
+#footer .first    {margin:10px 20px 10px 0px;}
+#footer .last     {margin:10px 0px 10px 20px;}
+#footer .single   {width:140px;}
+#footer .double   {width:320px;}
+
+
+
+.messages					{color:#f33;font-size:0.75em;font-weight: normal;}
+#messages div			{padding: 10px;border-radius: 5px;font-weight: bold;}
+#messages .success{background-color: #080;}
+#messages .error	{background-color: #800;}
+
+#header .banner		{margin-top:10px;}
+#right .banner		{margin-top:273px;}
+
+.fbicon						{float:left;width:36px;margin-right:10px;}
+
+/** main menu **/
+#menu						  {height:60px;background:url('images/blue_divider.jpg') repeat-x center bottom;background-color:#7890c7;padding:0px;box-shadow: 0px -1px 1px #869dcf;}
+#menu-inner       {width:900px;margin:0px auto;}
+#menu-inner ul    {margin:0px;padding:0px;}
+#menu-inner li	  {margin:0px;list-style-type: none;color:#ccf3cc;float:left;padding:0px;height:60px;}
+#menu-inner li a  {color:#ccf3cc;text-transform: lowercase;font-weight: bold;font-size: 1.2em;display:block;height:20px;padding:20px 30px;height:18px;}
+#menu-inner a:hover  {background-color: #ccccff;color:#7890c7;text-decoration: none;box-shadow: 0px -1px 1px #869dcf;}
+
+/** star **/
+td.star						{width:60px;cursor:pointer;height:20px;}
+#star-popup       {color:#000;}
+/*
+#star-popup				{position:fixed;height:60%;width:30%;background-color:#e49700;left:35%;top:200px;padding:20px;overflow: auto;font-family: Arial, "MS Trebuchet", sans-serif;}
+#star-popup table	{width:100%;border-spacing:0px;}
+#star-popup table td	{padding:5px;}
+#star-popup tr.odd	{background-color:#fff;}
+#star-popup tr.even	{background-color:#ccc;}
+#star-popup tr:hover{background-color:#e49700;}
+#star-popup .close{font-weight: bold;text-align: center;margin-top:20px;}
+*/
+
+/** blogy **/
+
+.blog-created			{font-size: 0.7em;font-weight: normal;font-style: italic;}
+.blogs h2, .blog h2, .stranka h2					{margin-bottom:5px;}
+.blogs p.readmore	{clear:both;}
+
+/** blocks **/
+.box              {font-size: 0.75em;}
+h3.block          {margin:0px 0px 5px 0px;}
+
+/** persons **/
+
+.person .text .image	{float: left;margin: 0px 20px 20px 0px;}
+
+/** tables **/
+.admin table			{width:100%;}
+.admin table th		{text-align:left;}
+
+/** forms **/
+label							{display:block;font-weight: bold;margin-top:20px;}
+input[type="text"], textarea							{width:100%;font-family:Verdana;}
+textarea					{height:200px;}
+input.date				{width:50px;}
+
+ul.tabs           {margin:0px;}
+ul.tabs li a      {border:none;}
+ul.tabs .active a {background-color: #e49700;border:none;background-color: rgba(204,234,204,.9)}
+ul.tabs .active a:hover {border: none;}
+
+ul#files					{margin:10px 0px;padding:0px;}
+ul#files li				{list-style-type: none;background-color: #999;padding: 5px;margin:5px;font-size:0.8em;}
+.submit						{clear:both;}
+ul#files .remove	{color:#600;text-transform: lowercase;font-weight: bold;margin:5px 0px;}
+
+/** admin menu **/
+ul.admin-menu						{margin:20px 0px 0px 0px;padding:0px 0px 0px 0px;height:30px;}
+ul.admin-menu
+ li				{display:inline;margin:0px 5px;list-style-type: none;padding:5px 10px;height:20px;background-image:url('images/transparent.png');-moz-border-radius: 5px;border-radius: 5px;color:#333;opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter: alpha(opacity=0);cursor: pointer;}
+ 
+ /* responsive stuff */
+ #small-menu, #small-menu-popup      {display:none;}
+h3.form-header-small                 {display:none;}
