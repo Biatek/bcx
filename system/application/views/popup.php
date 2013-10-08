@@ -3,6 +3,7 @@
   if (strpos($_SERVER['HTTP_USER_AGENT'],"MSIE")) $msie=true;
   if ($msie) {
    require_once "header.php";
+   echo "<h1 style=\"color:black\">Choose a person!</h1>\n";
    $i=explode("/",$_SERVER['REQUEST_URI']);
    $id_name=$i[4];
   }
