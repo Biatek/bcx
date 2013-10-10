@@ -48,7 +48,11 @@
 						<?=lang('result.half.birthday.was')?> <?=date(lang('master.dateformat'), $half['half'])?> <?=lang('result.half.which.was')?> <?=$half['days']?> <?=lang('result.half.days.ago')?>
 					<?php } elseif ($half['days'] == 0) { ?>
 						<?=lang('result.half.birthday.today')?>
-					<?php } ?>
+					<?php } ?> 
+
+        <br />
+        <b>Your Path nuber is: <?=$this->calc->getPathNumber($person)?> </b>
+  
 				</p>
 			<?php } ?>    
 		<?php } ?>    

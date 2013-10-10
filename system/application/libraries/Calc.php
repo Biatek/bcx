@@ -198,6 +198,18 @@ class Calc {
 		return $result;	
 	}
 	
+  function getPathNumber($date) {
+    $path = $date['day']+ $date['month'] + $date['year'] ;
+    $path="$path" ;
+    $path = $path[0] + $path[1] + $path[2] + $path[3];    
+    if ($path >= 10) { 
+      $path="$path" ;  //musi to tam byt     
+      $path = $path[0] + $path[1] ;
+    }
+    return $path ;
+  }
+  
+  
 	function getAnimalBirthday($date, $ratio = 1) {
 		$age = ($this->_getNow() - $this->_getTimestamp($date))/(60*60*24*365.2422);
 		$animalAge = $age*$ratio;
