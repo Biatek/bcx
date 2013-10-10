@@ -51,7 +51,7 @@
 					<?php } ?> 
 
         <br />
-        <b>Your Path nuber is: <?=$this->calc->getPathNumber($person)?> </b>
+        <?=lang('result.path.number')?> <?=$this->calc->getPathNumber($person)?>
   
 				</p>
 			<?php } ?>    

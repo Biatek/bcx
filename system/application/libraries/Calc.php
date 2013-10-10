@@ -206,6 +206,10 @@ class Calc {
       $path="$path" ;  //musi to tam byt     
       $path = $path[0] + $path[1] ;
     }
+    if ($path >= 10) {   // podmienka 2x, lebo sa stavalo, ze vyslo pn 10, napr. 1.1.1961
+      $path="$path" ;       
+      $path = $path[0] + $path[1] ;
+    }
     return $path ;
   }
   

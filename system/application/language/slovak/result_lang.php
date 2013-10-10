@@ -48,6 +48,7 @@ $lang['result.half.which.was'] = 'čo bolo pred';
 $lang['result.half.days.ago'] = 'dňami.';
 
 $lang['result.half.birthday.today'] = 'Vaše polovičné narodeniny sú dnes! Polovicu najlepšie!';
+$lang['result.path.number'] = 'Životné číslo je ';
 
 $lang['result.animals.if'] = 'Ak by si bol ';
 $lang['result.animals.then'] = ' tak by svoje ';

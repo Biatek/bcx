@@ -48,6 +48,7 @@ $lang['result.half.which.was'] = 'which was';
 $lang['result.half.days.ago'] = 'days ago.';
 
 $lang['result.half.birthday.today'] = 'Your half-birthday are today! Halfgratulations!';
+$lang['result.path.number'] = 'Life Path nuber is ';
 
 $lang['result.animals.if'] = 'If you were ';
 $lang['result.animals.then'] = ' then you would celebrate your ';
