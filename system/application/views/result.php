@@ -3,7 +3,7 @@
 	<li class="birthday active"><a href="#"><?=lang('tabs.birthday')?></a></li>
 	<li class="animals"><a href="#"><?=lang('tabs.animals')?></a></li>
 	<li class="planetes"><a href="#"><?=lang('tabs.planetes')?></a></li>
-<!-- 	<li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?></a></li> -->
+  <li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?></a></li>
 </ul>
 <div class="result">
 	<div class="tab birthday">
@@ -107,9 +107,53 @@
 	</div>
 	<div class="tab celebratenow">
 	 <?php
+   
+  //print_r ($persons) ;
+  $celebrate=array();
+	foreach ($persons as $key => $person) {
+    // birthday 
+    $delta = $this->calc->getCelebrateDelta($person);
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $this->calc->getYears($person) ;
+    if ($jubilee == 0) {
+        $jubilee = 1;}  // podmienka pre vypocet ak ma niekto menej ako rok
+    if ($delta == 0) {
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name] today, $date,  you celebrate birthdy $jubilee th birthday.<br />";  }
+    elseif ($delta == 1) {
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name] tomorrow, $date,  you celebrate birthdy $jubilee th birthday.<br />"; }
+    else
+    $celebrate[$delta]="$delta days form now, $date, $person[name] will celebrate birthdy $jubilee th birthday.<br />";
+
+
+    
+    //half birthday
+    $delta = $this->calc->getHalfBirthdayDelta($person);
+   
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta]="$delta days form now, $date , $person[name] will celebrate half birthday. <br />";   
+  }
+/*POZNAMKY
+- ak je delta rovnaka, zobrazi len jednu oslavu k tomu dnu
+*/  
+  ksort($celebrate);
+
+  foreach ($celebrate as $text) {
+    echo $text;
+  }  
+ 
+   
+/*
+Today, 23 Jan 2011, Dominic celebrate half birthday    F T e R C ?
+Tomorow, 24 Jan 2011, Madona celebrate 87 years on the Venus   F T e R C ?
+4 days from now, 28 jan 2011, Roger Federer celebrate 26 ostich years   F T e R C ?
+15 days from now, 7 feb 2011, Roger Federer, Madona, Michael Jordan celebrate 120 combine birthday F T e R C ?
+$delta.$date.$name."celebrate"."meniaci sa texts"
+*/
+   
+   
 	   $now = array();
 	   foreach ($persons as $person) {
-	     $half = $this->calc->getHalfBirthday($person);
+	     $half = $this->calc->getHalfBirthday($person); 
 	     if ($half['days'] < 0) {
   	     $half['days'] = abs($half['days']);
 	     }
@@ -125,16 +169,22 @@
     	   ),
     	   'name' => $person['name'],
   	   );
+      //var_dump ($now) ;
+
+        //print ($half['days']) ;   
 	   }
+      //print ($half['days']) ; 
 	   // sorting and output
 	   foreach ($now as &$person) {
+     //var_dump ($person) ;
+           print $result['days'] ;
 	     print '<ul><strong>'.$person['name'].'</strong>';
   	   uasort($person['dates'], array('calc', 'cmpCelebrateNowDates'));
   	   foreach ($person['dates'] as $key => $date) {
   	     print $this->load->view('now/'.$key, array('name' => $person['name'], 'date' => $date));
   	   }
   	   print '</ul>';
-	   }
+	   }    
 	 ?>
   </div>
 	<div class="start-over"><span id="start-over"><?=lang('result.start.over')?></span></div>

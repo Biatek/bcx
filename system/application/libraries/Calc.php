@@ -198,7 +198,7 @@ class Calc {
 		return $result;	
 	}
 	
-  function getPathNumber($date) {
+  function getPathNumber($date) {          //doprobramovane Martin
     $path = $date['day']+ $date['month'] + $date['year'] ;
     $path="$path" ;
     $path = $path[0] + $path[1] + $path[2] + $path[3];    
@@ -275,4 +275,42 @@ class Calc {
 	function cmpCelebrateNowDates($date1, $date2) {
   	return ($date1['days'] > $date2['days'])? 1 : -1;
 	}
+
+// doplnene funkcie k Celebrata NOW Martin
+
+	function cmpDelta($delta1, $delta2) {  
+    if ($delta1 == $delta2) {
+        return 0;
+    }
+    return ($delta1 < $delta2) ? -1 : 1;
+  }
+
+
+  function getCelebrateDelta($date) {
+    $year = date("Y");
+    $birthday = mktime(0,0,0,$date['month'],$date['day'],$year);
+    $now = mktime(0,0,0,date("n"),date("j"),$year);
+    if ($birthday < $now) {                                          
+      $birthday = mktime(0,0,0,$date['month'],$date['day'],$year+1); }  
+    $delta = round(($birthday - $now)/(60*60*24));
+    return $delta;
+  }
+
+  function getHalfBirthdayDelta($date) {  
+    $half = 15811200 ; //183 dni x 60 x 60 x24
+    $year = date("Y");
+    $birthday = mktime(0,0,0,$date['month'],$date['day'],$year);
+    $now = mktime(0,0,0,date("n"),date("j"),$year);
+    if (($now > $birthday) && (($now - $birthday) < $half)) { 
+      $delta = round(($half - ($now - $birthday))/(60*60*24)) ; }
+    elseif (($now > $birthday) && (($now - $birthday) > $half)) {
+      $delta = round((($now - $birthday) + $half)/(60*60*24));     }
+    elseif (($now < $birthday) && (($birthday - $now) > $half)) {
+      $delta = round((($birthday - $now) - $half)/(60*60*24));     }
+    elseif (($now < $birthday) && (($birthday - $now) < $half)) {
+      $delta = round(($birthday + $half)/(60*60*24));     }
+    elseif ($now == $birthday)  {
+    $delta = 183; }
+    return $delta;
+  }                                                          
 }
