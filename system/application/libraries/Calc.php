@@ -299,18 +299,20 @@ class Calc {
   function getHalfBirthdayDelta($date) {  
     $half = 15811200 ; //183 dni x 60 x 60 x24
     $year = date("Y");
+    $next_year = $year + 1 ;
     $birthday = mktime(0,0,0,$date['month'],$date['day'],$year);
-    $now = mktime(0,0,0,date("n"),date("j"),$year);
-    if (($now > $birthday) && (($now - $birthday) < $half)) { 
+    $next_birthday = mktime(0,0,0,$date['month'],$date['day'],$next_year);
+    $now = mktime(0,0,0,date("n"),date("j"),$year); 
+    if (($now > $birthday) && (($now - $birthday) <= $half)) { 
       $delta = round(($half - ($now - $birthday))/(60*60*24)) ; }
     elseif (($now > $birthday) && (($now - $birthday) > $half)) {
-      $delta = round((($now - $birthday) + $half)/(60*60*24));     }
+      $delta = round((($next_birthday - $now) + $half)/(60*60*24));     }
     elseif (($now < $birthday) && (($birthday - $now) > $half)) {
-      $delta = round((($birthday - $now) - $half)/(60*60*24));     }
+      $delta = round(($birthday - $now - $half)/(60*60*24));     }
     elseif (($now < $birthday) && (($birthday - $now) < $half)) {
-      $delta = round(($birthday + $half)/(60*60*24));     }
+      $delta = round(($birthday - $now + $half)/(60*60*24));     }
     elseif ($now == $birthday)  {
-    $delta = 183; }
+    $delta = 183; }  
     return $delta;
   }                                                          
 }

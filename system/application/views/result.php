@@ -114,15 +114,15 @@
     // birthday 
     $delta = $this->calc->getCelebrateDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
-    $jubilee = $this->calc->getYears($person) ;
+    $jubilee = $this->calc->getYears($person) + 1 ;
     if ($jubilee == 0) {
         $jubilee = 1;}  // podmienka pre vypocet ak ma niekto menej ako rok
     if ($delta == 0) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name] today, $date,  you celebrate birthdy $jubilee th birthday.<br />";  }
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], today $date, celebrate $jubilee th birthday.<br />";  }
     elseif ($delta == 1) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name] tomorrow, $date,  you celebrate birthdy $jubilee th birthday.<br />"; }
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate $jubilee th birthday.<br />"; }
     else
-    $celebrate[$delta]="$delta days form now, $date, $person[name] will celebrate birthdy $jubilee th birthday.<br />";
+    $celebrate[$delta]="$delta days form now, $date, $person[name] will celebrate $jubilee th birthday.<br />";
 
 
     
@@ -130,6 +130,12 @@
     $delta = $this->calc->getHalfBirthdayDelta($person);
    
     $date = date("j.n.Y",time()+$delta*60*60*24);
+    if ($delta == 0) {
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], today $date, celebrate half birthday.<br />";  }
+    elseif ($delta == 1) {
+          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate half birthday.<br />"; }
+
+    else
     $celebrate[$delta]="$delta days form now, $date , $person[name] will celebrate half birthday. <br />";   
   }
 /*POZNAMKY
