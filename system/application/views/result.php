@@ -111,6 +111,7 @@
   //print_r ($persons) ;
   $celebrate=array();
 	foreach ($persons as $key => $person) {
+    
     // birthday 
     $delta = $this->calc->getCelebrateDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
@@ -122,13 +123,10 @@
     elseif ($delta == 1) {
           $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate $jubilee th birthday.<br />"; }
     else
-    $celebrate[$delta]="$delta days form now, $date, $person[name] will celebrate $jubilee th birthday.<br />";
-
-
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th birthday.<br />";
     
     //half birthday
     $delta = $this->calc->getHalfBirthdayDelta($person);
-   
     $date = date("j.n.Y",time()+$delta*60*60*24);
     if ($delta == 0) {
           $celebrate[$delta]="HAPPY BIRTHDAY $person[name], today $date, celebrate half birthday.<br />";  }
@@ -136,8 +134,63 @@
           $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate half birthday.<br />"; }
 
     else
-    $celebrate[$delta]="$delta days form now, $date , $person[name] will celebrate half birthday. <br />";   
+    $celebrate[$delta]="$delta days from now, $date , $person[name] will celebrate half birthday. <br />";  
+    
+    //mars age
+    $result = $this->calc->getMercuryAge($person);
+    $delta=$result['delta'];
+    $jubilee=$result['next_mercury_age'];
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    
+    $delta = $delta + 88 ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $jubilee + 1 ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $delta = $delta + 88 ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $jubilee + 1 ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $delta = $delta + 88 ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $jubilee + 1 ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $delta = $delta + 88 ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $jubilee + 1 ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+
+    // Planet age - pre vsetky planety
+    // Venus
+    $delta = $this->calc->getPlanetAge($person, 224.70096);
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $this->calc->getPlanetJubilee($person, 224.70096) ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Venus age .<br />";
+    //Mars
+    $delta = $this->calc->getPlanetAge($person, 686.971);
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $this->calc->getPlanetJubilee($person, 686.971) ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mars age .<br />";
+    //Jupiter
+    $delta = $this->calc->getPlanetAge($person, 4335.3545);
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $jubilee = $this->calc->getPlanetJubilee($person, 4335.3545) ;
+    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Jupiter age .<br />";
+    //Saturn
+    
+    //Uranus
+
+    //combine birthday
+/*    $delta = $this->calc->getCombinedBirthday($person);
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta]="$delta days from now, $date , will celebrate half COMBINE birthday. <br />";        */
+    
+     
   }
+  
+  
+     
+  
 /*POZNAMKY
 - ak je delta rovnaka, zobrazi len jednu oslavu k tomu dnu
 */  
@@ -175,12 +228,8 @@ $delta.$date.$name."celebrate"."meniaci sa texts"
     	   ),
     	   'name' => $person['name'],
   	   );
-      //var_dump ($now) ;
-
-        //print ($half['days']) ;   
 	   }
-      //print ($half['days']) ; 
-	   // sorting and output
+     
 	   foreach ($now as &$person) {
      //var_dump ($person) ;
            print $result['days'] ;

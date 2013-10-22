@@ -278,13 +278,13 @@ class Calc {
 
 // doplnene funkcie k Celebrata NOW Martin
 
-	function cmpDelta($delta1, $delta2) {  
+/*	function cmpDelta($delta1, $delta2) {       
     if ($delta1 == $delta2) {
         return 0;
     }
     return ($delta1 < $delta2) ? -1 : 1;
   }
-
+ */
 
   function getCelebrateDelta($date) {
     $year = date("Y");
@@ -314,5 +314,46 @@ class Calc {
     elseif ($now == $birthday)  {
     $delta = 183; }  
     return $delta;
-  }                                                          
+  } 
+  
+    function getMercuryAge($date) {
+    $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+    $earth_age = ($now - $earth_born)/(60*60*24);  //vek v dnoch
+    $mercury_year = 87.96934 ; //doba obehu v dnoch
+		$mercury_age = $earth_age/$mercury_year;
+		$result['next_mercury_age'] = ceil($mercury_age);
+    $result['delta'] = round(($result['next_mercury_age'] - $mercury_age) * $mercury_year);
+    return $result;
+  } 
+  
+ /*   function getMercuryJubilee($date) {
+    $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+    $earth_age = ($now - $earth_born)/(60*60*24);  //vek v dnoch
+    $mercury_year = 87.96934 ; //doba obehu v dnoch
+		$mercury_age = $earth_age/$mercury_year;
+		$next_mercury_age = ceil($mercury_age);
+    return $next_mercury_age;
+  }  */ 
+    //univerzalny vypocet na planety
+    function getPlanetAge($date, $ratio = 1) {
+    $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+    $earth_age = ($now - $earth_born)/(60*60*24);  //vek v dnoch
+		$planet_age = $earth_age/$ratio ;
+		$next_planet_age = ceil($planet_age);
+    $delta = round(($next_planet_age - $planet_age) * $ratio);
+    return $delta;
+  } 
+    function getPlanetJubilee($date, $ratio = 1) {
+    $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+    $earth_age = ($now - $earth_born)/(60*60*24);  //vek v dnoch
+		$planet_age = $earth_age/$ratio ;
+		$next_planet_age = ceil($planet_age);
+    return $next_planet_age;
+  }  
+    
+                                                         
 }
