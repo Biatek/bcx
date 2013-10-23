@@ -286,6 +286,30 @@ class Calc {
   }
  */
 
+  function getBorn($date) {
+    $born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+    return $born;
+  }
+  
+  function getNowZero($date) {
+    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+    return $now;
+  }
+  
+  function getDaysZero($date) {
+    $days = round(($this->getNowZero($date) - $this->getBorn($date))/(60*60*24)) ;
+    return $days;
+  }  
+
+ /* function getTotalDaysZero($date) {
+    $total = 0;
+		foreach ($persons as $person) {
+			$total = $total + $this->getDaysZero($date);
+		}
+		return $total;
+  }  */
+    
+    
   function getCelebrateDelta($date) {
     $year = date("Y");
     $birthday = mktime(0,0,0,$date['month'],$date['day'],$year);

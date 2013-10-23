@@ -103,14 +103,170 @@
 		<p><?=lang('result.planetes.if')?><strong><?=lang('planetes.neptune')?></strong><?=lang('result.planetes.then')?><?=$this->calc->getPlanetesAge($person, 60190)?><?=lang('result.planetes.celebrate')?><?=date(lang('master.dateformat'), $this->calc->getPlanetesBirthday($person, 60190))?>.</p>
 		<p><?=lang('result.planetes.if')?><strong><?=lang('planetes.pluto')?></strong><?=lang('result.planetes.then')?><?=$this->calc->getPlanetesAge($person, 90613.3055)?><?=lang('result.planetes.celebrate')?><?=date(lang('master.dateformat'), $this->calc->getPlanetesBirthday($person, 90613.3055))?>.</p>
 	</p>
-<?php } ?>	
+<?php } ?>	    //xxxxxxxxxxxxxx
 	</div>
 	<div class="tab celebratenow">
 	 <?php
-   
-  //print_r ($persons) ;
+    $number = count($persons)."<br />";
+/*    echo $number ;
+    $delta = $this->calc->getTotalDays($dates);
+    echo  $delta."<br />";    */
+    
+/*  foreach ($persons as $person) { 
+      $person=$persons[0];
+      $born = $this->calc->getDaysZero($person);
+      echo $born."<br />" ; 
+  }    */
+
+/*  for ($i=0;$i<=$number;$i++) {
+    $cmbdays = $this->calc->getDaysZero($persons[$i]) ;
+    echo $cmbdays."<br />";    
+  }    */
+      
+  echo "<br />" ;
+  
   $celebrate=array();
-	foreach ($persons as $key => $person) {
+	foreach ($persons as $person) {
+ 
+    //Combine birthday
+//kombinacie dvojice    
+$x1=0;    
+while ($x1<$number) {
+  $x2=$x1+1 ;
+    while ($x2<$number){    
+    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) ;
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][1000]="$delta days from now, $date, $person[name] will celebrate $nextjub th COMBINE birthday. <br />";
+  $x2=++$x2 ;
+  }
+$x1=++$x1 ; 
+}    
+//kombinacie trojice
+$x1=0;   
+while ($x1<$number) {
+  $x2=$x1+1 ;
+    while ($x2<$number){
+      $x3=$x2+1 ;
+      while ($x3<$number){   
+    $cmbdays = ($this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]));
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][1000]="$delta days from now, $date, $person[name] will celebrate $nextjub th 333333 birthday. <br />";
+      $x3=++$x3 ;
+      } 
+  $x2=++$x2 ;
+  }
+$x1=++$x1 ; 
+}    
+//kombinacie stvorice
+$x1=0;
+while ($x1<$number) {
+  $x2=$x1+1 ;
+    while ($x2<$number){
+      $x3=$x2+1 ;
+      while ($x3<$number){
+        $x4=$x3+1 ;
+        while ($x4<$number){
+    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]);
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][1000]="$delta days from now, $date, $person[name] will celebrate $nextjub th 44444 birthday. <br />";
+        $x4=++$x4 ;
+        } 
+      $x3=++$x3 ;
+      } 
+  $x2=++$x2 ;
+  }
+$x1=++$x1 ; 
+}
+    
+//kombinacie patice
+$x1=0;
+while ($x1<$number) {
+  $x2=$x1+1 ;
+    while ($x2<$number){
+      $x3=$x2+1 ;
+      while ($x3<$number){
+        $x4=$x3+1 ;
+        while ($x4<$number){
+          $x5=$x4+1 ;
+          while ($x5<$number){
+    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]);
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][1000]="$delta days from now, $date, $person[name] will celebrate $nextjub th 55555 birthday. <br />";
+          $x5=++$x5 ;
+          } 
+        $x4=++$x4 ;
+        } 
+      $x3=++$x3 ;
+      } 
+  $x2=++$x2 ;
+  }
+$x1=++$x1 ; 
+}
+//kombinacie sestice
+$x1=0;
+while ($x1<$number) {
+  $x2=$x1+1 ;
+    while ($x2<$number){
+      $x3=$x2+1 ;
+      while ($x3<$number){
+        $x4=$x3+1 ;
+        while ($x4<$number){
+          $x5=$x4+1 ;
+          while ($x5<$number){
+            $x6=$x5+1 ;
+            while ($x6<$number){
+    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]) + $this->calc->getDaysZero($persons[$x6]);
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][1000]="$delta days from now, $date, $person[name] will celebrate $nextjub th 66666 birthday. <br />";
+            $x6=++$x6 ;
+            } 
+          $x5=++$x5 ;
+          } 
+        $x4=++$x4 ;
+        } 
+      $x3=++$x3 ;
+      } 
+  $x2=++$x2 ;
+  }
+$x1=++$x1 ; 
+}
+
+
+/*    $cmbdays = $this->calc->getTotalDays($dates) ;
+    $days = 365.2422 ;
+    $jub = ($cmbdays/$days) ;
+    $nextjub = ceil($jub) ;
+    $deltax = (($nextjub - $jub) * $days);
+    $delta = round($deltax/$number) ;
+    $date = date("j.n.Y",time()+$delta*60*60*24);
+    $celebrate[$delta][100]="$delta days from now, $date, $person[name] will celebrate $nextjub th combine birthday. <br />";
+*/    
+
     
     // birthday 
     $delta = $this->calc->getCelebrateDelta($person);
@@ -119,63 +275,63 @@
     if ($jubilee == 0) {
         $jubilee = 1;}  // podmienka pre vypocet ak ma niekto menej ako rok
     if ($delta == 0) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], today $date, celebrate $jubilee th birthday.<br />";  }
+          $celebrate[$delta][]="HAPPY BIRTHDAY $person[name], today $date, celebrate $jubilee th birthday.<br />";  }
     elseif ($delta == 1) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate $jubilee th birthday.<br />"; }
+          $celebrate[$delta][]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate $jubilee th birthday.<br />"; }
     else
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th birthday.<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th birthday.<br />";
     
     //half birthday
     $delta = $this->calc->getHalfBirthdayDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
     if ($delta == 0) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], today $date, celebrate half birthday.<br />";  }
+          $celebrate[$delta][]="HAPPY BIRTHDAY $person[name], today $date, celebrate half birthday.<br />";  }
     elseif ($delta == 1) {
-          $celebrate[$delta]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate half birthday.<br />"; }
+          $celebrate[$delta][]="HAPPY BIRTHDAY $person[name], tomorrow $date, celebrate half birthday.<br />"; }
 
     else
-    $celebrate[$delta]="$delta days from now, $date , $person[name] will celebrate half birthday. <br />";  
+    $celebrate[$delta][]="$delta days from now, $date , $person[name] will celebrate half birthday. <br />";  
     
     //mars age
     $result = $this->calc->getMercuryAge($person);
     $delta=$result['delta'];
     $jubilee=$result['next_mercury_age'];
     $date = date("j.n.Y",time()+$delta*60*60*24);
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
     
     $delta = $delta + 88 ;
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $jubilee + 1 ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
     $delta = $delta + 88 ;
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $jubilee + 1 ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
     $delta = $delta + 88 ;
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $jubilee + 1 ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
     $delta = $delta + 88 ;
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $jubilee + 1 ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mercury age .<br />";
 
     // Planet age - pre vsetky planety
     // Venus
     $delta = $this->calc->getPlanetAge($person, 224.70096);
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $this->calc->getPlanetJubilee($person, 224.70096) ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Venus age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Venus age .<br />";
     //Mars
     $delta = $this->calc->getPlanetAge($person, 686.971);
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $this->calc->getPlanetJubilee($person, 686.971) ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mars age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Mars age .<br />";
     //Jupiter
     $delta = $this->calc->getPlanetAge($person, 4335.3545);
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $jubilee = $this->calc->getPlanetJubilee($person, 4335.3545) ;
-    $celebrate[$delta]="$delta days from now, $date, $person[name] will celebrate $jubilee th Jupiter age .<br />";
+    $celebrate[$delta][]="$delta days from now, $date, $person[name] will celebrate $jubilee th Jupiter age .<br />";
     //Saturn
     
     //Uranus
@@ -183,11 +339,11 @@
     //combine birthday
 /*    $delta = $this->calc->getCombinedBirthday($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
-    $celebrate[$delta]="$delta days from now, $date , will celebrate half COMBINE birthday. <br />";        */
+    $celebrate[$delta][]="$delta days from now, $date , will celebrate half COMBINE birthday. <br />";        */
     
      
   }
-  
+   
   
      
   
@@ -196,8 +352,10 @@
 */  
   ksort($celebrate);
 
-  foreach ($celebrate as $text) {
-    echo $text;
+  foreach ($celebrate as $c) {
+    foreach ($c as $text) {
+      echo $text;
+    }
   }  
  
    
