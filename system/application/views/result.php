@@ -122,20 +122,6 @@
 //    $range=$_POST['range'];
 //    if (!$range)
       $range = 366; // rozsah, doba pokial ma pocitat spolocne narodky a na marse
-/*    echo $number ;
-    $delta = $this->calc->getTotalDays($dates);
-    echo  $delta."<br />";    */
-    
-/*  foreach ($persons as $person) { 
-      $person=$persons[0];
-      $born = $this->calc->getDaysZero($person);
-      echo $born."<br />" ; 
-  }    */
-
-/*  for ($i=0;$i<=$number;$i++) {
-    $cmbdays = $this->calc->getDaysZero($persons[$i]) ;
-    echo $cmbdays."<br />";    
-  }    */
       
   echo "<br />" ;
   
@@ -157,7 +143,6 @@ while ($x1<$number) {
     $person1=$persons[$x1];
     $person2=$persons[$x2];
     $repeat = 0 ;
-//$celebrate[$delta][200]="<b> $delta </b> days from now, <br />";
       while (($delta+182.5*$repeat)<=$range) {
         if ($repeat%2==0)
           {
@@ -194,7 +179,6 @@ while ($x1<$number) {
     $person2=$persons[$x2];
     $person3=$persons[$x3];
     $repeat = 0 ;
-//    $celebrate[$delta][300]="<b> $delta </b> days from now, $date, $person1[name], $person2[name] and $person3[name] will celebrate $jubilee"."<sup>th</sup> trio combine birthday. <br />";
       while (($delta+122*$repeat)<=$range) {
         if ($repeat%3==0)
           {
@@ -235,13 +219,11 @@ while ($x1<$number) {
     $nextjub = ceil($jub) ;
     $deltax = (($nextjub - $jub) * $days);
     $delta = round($deltax/4) ;
-    //$date = date("j.n.Y",time()+$delta*60*60*24);
     $person1=$persons[$x1];
     $person2=$persons[$x2];
     $person3=$persons[$x3];
     $person4=$persons[$x4];
     $repeat = 0 ;
-//    $celebrate[$delta][400]="<b> $delta </b> days from now, $date, $person1[name], $person2[name], $person3[name] and $person4[name] will celebrate $nextjub"."<sup>th</sup> quartet combine birthday. <br />";
       while (($delta+91.3*$repeat)<=$range) {
         if ($repeat%4==0)
           {
@@ -291,7 +273,6 @@ while ($x1<$number) {
     $nextjub = ceil($jub) ;
     $deltax = (($nextjub - $jub) * $days);
     $delta = round($deltax/5) ;
-    //$date = date("j.n.Y",time()+$delta*60*60*24);
     $person1=$persons[$x1];
     $person2=$persons[$x2];
     $person3=$persons[$x3];
@@ -467,8 +448,6 @@ while ($x1<$number) {
         $celebrate[$delta_repeat][700]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name] will celebrate $jubilee"."<sup>th</sup> septet combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
-
-  //  $celebrate[$delta][700]="<b> $delta </b> days from now, $date, $person[name] will celebrate $nextjub"."<sup>th</sup> septet combine birthday. <br />";
               $x7=++$x7 ;
               } 
             $x6=++$x6 ;
@@ -597,16 +576,7 @@ $x1=++$x1 ;
       echo $text;
     }
   }  
- 
-   
-/*
-Today, 23 Jan 2011, Dominic celebrate half birthday    F T e R C ?
-Tomorow, 24 Jan 2011, Madona celebrate 87 years on the Venus   F T e R C ?
-4 days from now, 28 jan 2011, Roger Federer celebrate 26 ostich years   F T e R C ?
-15 days from now, 7 feb 2011, Roger Federer, Madona, Michael Jordan celebrate 120 combine birthday F T e R C ?
-$delta.$date.$name."celebrate"."meniaci sa texts"
-*/
-   
+  
    
 	   $now = array();
 	   foreach ($persons as $person) {
