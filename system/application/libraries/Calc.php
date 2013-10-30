@@ -276,15 +276,6 @@ class Calc {
   	return ($date1['days'] > $date2['days'])? 1 : -1;
 	}
 
-// doplnene funkcie k Celebrata NOW Martin
-
-/*	function cmpDelta($delta1, $delta2) {       
-    if ($delta1 == $delta2) {
-        return 0;
-    }
-    return ($delta1 < $delta2) ? -1 : 1;
-  }
- */
 
   function getBorn($date) {
     $born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
@@ -300,15 +291,7 @@ class Calc {
     $days = round(($this->getNowZero($date) - $this->getBorn($date))/(60*60*24)) ;
     return $days;
   }  
-
- /* function getTotalDaysZero($date) {
-    $total = 0;
-		foreach ($persons as $person) {
-			$total = $total + $this->getDaysZero($date);
-		}
-		return $total;
-  }  */
-    
+ 
     
   function getCelebrateDelta($date) {
     $year = date("Y");
@@ -339,18 +322,7 @@ class Calc {
     $delta = 183; }  
     return $delta;
   } 
-  
-    function getMercuryAge($date) {
-    $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
-    $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
-    $earth_age = ($now - $earth_born)/(60*60*24);  //vek v dnoch
-    $mercury_year = 87.96934 ; //doba obehu v dnoch
-		$mercury_age = $earth_age/$mercury_year;
-		$result['next_mercury_age'] = ceil($mercury_age);
-    $result['delta'] = round(($result['next_mercury_age'] - $mercury_age) * $mercury_year);
-    return $result;
-    } 
-  
+ 
 
     //univerzalny vypocet na planety
     function getPlanetAge($date, $ratio = 1) {
