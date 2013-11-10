@@ -127,7 +127,7 @@
   
   $celebrate=array();
 	foreach ($persons as $person) {
- 
+
     //Combine birthday       
 //kombinacie dvojice    
 $x1=0;    
@@ -564,10 +564,193 @@ $x1=++$x1 ;
         $delta = $delta + 60190 ;  
         $jubilee = $jubilee + 1 ;    
       }
-
-     
-  }
    
+    //Animal age
+    //dog
+    $result = $this->calc->getAnimalAgex($person, 0.143);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> dogs age .<br />";
+        $delta = round($delta + (365/0.143));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+    
+    //tortle      Giant Tortoise
+    $result = $this->calc->getAnimalAgex($person, 2.197);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> turtle age .<br />";
+        $delta = round($delta + (365/2.197));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+      
+     //lion
+    $result = $this->calc->getAnimalAgex($person, 0.419);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> lion age .<br />";
+        $delta = round($delta + (365/0.419));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+     //horse
+    $result = $this->calc->getAnimalAgex($person, 0.578);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> horse age .<br />";
+        $delta = round($delta + (365/0.578));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //elephant
+    $result = $this->calc->getAnimalAgex($person, 1.127);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> elephant age .<br />";
+        $delta = round($delta + (365/1.127));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //aligator
+    $result = $this->calc->getAnimalAgex($person, 0.954);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> aligator age .<br />";
+        $delta = round($delta + (365/0.954));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //orangutan
+    $result = $this->calc->getAnimalAgex($person, 0.853);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> orangutan age .<br />";
+        $delta = round($delta + (365/0.853));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //camel
+    $result = $this->calc->getAnimalAgex($person, 0.723);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> camel age .<br />";
+        $delta = round($delta + (365/0.723));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //rhinoceros
+    $result = $this->calc->getAnimalAgex($person, 0.636);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> rhinoceros age .<br />";
+        $delta = round($delta + (365/0.636));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //shark
+    $result = $this->calc->getAnimalAgex($person, 0.462);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> shark age .<br />";
+        $delta = round($delta + (365/0.462));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+
+    //cat
+    $result = $this->calc->getAnimalAgex($person, 0.361);
+    $jubilee=$result['next_animal_age'];    
+    $delta=$result['delta'];
+      while ($delta<=$range) {
+        $date = date("j.n.Y",time()+$delta*60*60*24);
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> cat age .<br />";
+        $delta = round($delta + (365/0.361));  
+        $jubilee = $jubilee + 1 ;    
+      }  
+   
+  //celebrate round days    
+    $days = $this->calc->getDaysZero($person);
+    if ($days == 0) {
+      $delta = 0 ;
+      $celebrate[$delta][]="<b> $person[name] </b> you have just been born :-) <br />";
+    }
+     
+        $i = 50 ;
+        while ($i<$days+$range) {
+          $delta = ($i - $days) ;
+          $date = date("j.n.Y",time()+$delta*60*60*24);
+          if ($delta>0)
+            $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i days.<br />";
+          if ($i>=1000) $i=$i+500;
+          if ($i>=300 && $i<1000) $i=$i+100;
+          if ($i<300) $i=$i+50;
+        }      
+  //celebrate round hodiny  1 000, 5 000, 10 000, ...
+    $days = $this->calc->getDaysZero($person);
+    $i = 1000 ;
+    while ($i/(24)<($days+$range)) {
+          $delta = round($i/(24) - $days) ;
+          $date = date("j.n.Y",time()+$delta*60*60*24);
+          if ($delta>0)
+            $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i hours.<br />";
+          if ($i>=10000) $i=$i+10000;
+          if ($i==5000) $i=$i+5000;
+          if ($i==1000) $i=$i+4000;
+    } 
+
+  //celebrate round minutes     10 000, 50 000, 100 000, 150 000, 200 000, 500 000 ...
+    $days = $this->calc->getDaysZero($person);
+    $i = 10000 ;
+    while ($i/(24*60)<($days+$range)) {
+          $delta = round($i/(24*60) - $days) ;
+          $date = date("j.n.Y",time()+$delta*60*60*24);
+          if ($delta>0)
+            $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i minutes.<br />";
+          if ($i>=1000000) $i=$i+500000;
+          if ($i==100000) $i=$i+900000;
+          if ($i==50000) $i=$i+50000;
+          if ($i==10000) $i=$i+40000;
+    } 
+  
+
+   //celebrate round seconds     v milions 1, 10, 50 ...
+    $days = $this->calc->getDaysZero($person);
+    $i = 1 ;
+    while ($i*1000000/(24*60*60)<($days+$range)) {                                                                           
+          $delta = round($i*1000000/(24*60*60) - $days) ;
+          $date = date("j.n.Y",time()+$delta*60*60*24);
+          if ($i==1 && $delta>0)
+            $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i milions seconds.<br />YOU ARE A MILLIONAIRE <br />";
+          if ($i>1 && $delta>0)
+            $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i milions seconds.<br />";
+          if ($i>=50) $i=$i+50;
+          if ($i==10) $i=$i+40;
+          if ($i==1) $i=$i+9;
+    } 
+  
+
+}   // patri k celebrate
+
+
  
   ksort($celebrate);
 

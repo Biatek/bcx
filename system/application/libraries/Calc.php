@@ -334,6 +334,16 @@ class Calc {
     $result['delta'] = round(($result['next_planet_age'] - $planet_age) * $ratio);
     return $result;
     }    
-    
+                    
+    //univerzalny vypocet na zvierata    dog 0.143
+    function getAnimalAgex($date, $ratio = 1) {
+      $earth_born = mktime(0,0,0,$date['month'],$date['day'],$date['year']);
+      $now = mktime(0,0,0,date("n"),date("j"),date("Y"));
+      $earth_age = ($now - $earth_born)/(60*60*24*365.2422);  //vek v rokoch
+		  $animal_age = $earth_age*$ratio ;
+		$result['next_animal_age'] = ceil($animal_age);
+    $result['delta'] = round(($result['next_animal_age'] - $animal_age) / $ratio*365.2422);
+    return $result;
+    }        
                                                          
 }
