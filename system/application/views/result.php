@@ -128,7 +128,7 @@
   
   $celebrate=array();
 	foreach ($persons as $person) {
-
+ 
     //Combine birthday       
 //kombinacie dvojice    
 $x1=0;    
@@ -155,7 +155,7 @@ while ($x1<$number) {
           }
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday";
+        $calendar[$date].="<p><b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday</p>";
         $celebrate[$delta_repeat][200]="<b> $delta_repeat </b> days from now, $date, $person1[name] and $person2[name] will celebrate $jubilee"."<sup>th</sup> duo combine birthday. <br />";
         $jubilee = $jubilee + 1 ;    
       }
@@ -196,7 +196,7 @@ while ($x1<$number) {
           }
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday";
+        $calendar[$date].="<p><b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday</p>";
         $celebrate[$delta_repeat][300]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name] and $person3[name] will celebrate $jubilee"."<sup>th</sup> trio combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
@@ -247,7 +247,7 @@ while ($x1<$number) {
           
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday";
+        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday</p>";
         $celebrate[$delta_repeat][400]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name] and $person4[name] will celebrate $nextjub"."<sup>th</sup> quartet combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
@@ -306,7 +306,7 @@ while ($x1<$number) {
           }
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday";
+        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday</p>";
         $celebrate[$delta_repeat][500]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name] and $person5[name] will celebrate $jubilee"."<sup>th</sup> quintet combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
@@ -374,7 +374,7 @@ while ($x1<$number) {
           }
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday";
+        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday</p>";
         $celebrate[$delta_repeat][600]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name] will celebrate $jubilee"."<sup>th</sup> sextet combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
@@ -451,7 +451,7 @@ while ($x1<$number) {
           }
         $repeat = $repeat + 1 ;
         $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday";
+        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday</p>";
         $celebrate[$delta_repeat][700]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name] will celebrate $jubilee"."<sup>th</sup> septet combine birthday. <br />";
         $jubilee = $jubilee + 1 ;
         }
@@ -487,7 +487,7 @@ $x1=++$x1 ;
     //half birthday
     $delta = $this->calc->getHalfBirthdayDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
-    $calendar[$date].="<b>$person[name]</b> Half Birthday";
+    $calendar[$date].="<p><b>$person[name]</b> Half Birthday</p>";
     if ($delta == 0) {
           $celebrate[$delta][]="HAPPY BIRTHDAY $person[name], today $date, celebrate half birthday.<br />";  }
     elseif ($delta == 1) {
@@ -496,223 +496,40 @@ $x1=++$x1 ;
     else
     $celebrate[$delta][]="<b> $delta </b> days from now, $date , $person[name] will celebrate half birthday. <br />";  
    
-    // Planet age - pre vsetky planety    
-    //mars age
-    $result = $this->calc->getPlanetAge($person, 87.96934);
-    $jubilee=$result['next_planet_age'];
-    $delta=$result['delta'];
+    // Planet age - pre vsetky planety
+    $planets=array("Mercury" => 87.96934,"Venus" => 224.70096,"Mars" => 686.971,
+                    "Jupiter" => 4335.3545,"Saturn" => 10756.1995,"Uranus" => 30707.4896,"Neptune" => 60190);
+ 
+    foreach ($planets as $planet => $value) {
+      $result = $this->calc->getPlanetAge($person, $value);
+      $jubilee=$result['next_planet_age'];
+      $delta=$result['delta'];
       while ($delta<=$range) {
         $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Mercury age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Mercury age .<br />";
-        $delta = $delta + 88 ;  
+        $calendar[$date].="<p><b>$person[name]</b> $jubilee"."<sup>th</sup> Mercury age</p>";
+        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> $planet age .<br />";
+        $delta = $delta + round($value) ;  
         $jubilee = $jubilee + 1 ;    
-      }
+      }  
+    }  
 
-    // Venus
-    $result = $this->calc->getPlanetAge($person, 224.70096);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Venus age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Venus age .<br />";
-        $delta = $delta + 225 ;  
-        $jubilee = $jubilee + 1 ;    
-      }   
-    
-    //Mars
-    $result = $this->calc->getPlanetAge($person, 686.971);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Mars age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Mars age .<br />";
-        $delta = $delta + 687 ;  
-        $jubilee = $jubilee + 1 ;    
-      }      
-    
-    //Jupiter
-    $result = $this->calc->getPlanetAge($person, 4335.3545);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Jupiter age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Jupiter age .<br />";
-        $delta = $delta + 4335 ;  
-        $jubilee = $jubilee + 1 ;    
-      }
-    
-    //Saturn
-    $result = $this->calc->getPlanetAge($person, 10756.1995);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Satrurn age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Saturn age .<br />";
-        $delta = $delta + 10756 ;  
-        $jubilee = $jubilee + 1 ;    
-      }
-    
-    //Uranus
-    $result = $this->calc->getPlanetAge($person, 30707.4896);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Uranus age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Uranus age .<br />";
-        $delta = $delta + 30707 ;  
-        $jubilee = $jubilee + 1 ;    
-      }
-   
-    // Neptune 60190 
-    $result = $this->calc->getPlanetAge($person, 60190);
-    $jubilee=$result['next_planet_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> Neptune age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> Neptune age .<br />";
-        $delta = $delta + 60190 ;  
-        $jubilee = $jubilee + 1 ;    
-      }
-   
     //Animal age
-    //dog
-    $result = $this->calc->getAnimalAgex($person, 0.143);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> dog age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> dogs age .<br />";
-        $delta = round($delta + (365/0.143));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-    
-    //tortle      Giant Tortoise
-    $result = $this->calc->getAnimalAgex($person, 2.197);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date]="<b>$person[name]</b> $jubilee"."<sup>th</sup> tortle age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> turtle age .<br />";
-        $delta = round($delta + (365/2.197));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-      
-     //lion
-    $result = $this->calc->getAnimalAgex($person, 0.419);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> lion age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> lion age .<br />";
-        $delta = round($delta + (365/0.419));  
-        $jubilee = $jubilee + 1 ;    
-      }  
+    $animals=array("dog" => 0.143,"turtle" => 2.197,"lion" => 0.419,"horse" => 0.578,"elephant" => 1.127,
+                    "aligator" => 0.954,"orangutan" => 0.853,"camel" => 0.723,"rhino" => 0.636,"shark" => 0.462,"cat" => 0.361);
 
-     //horse
-    $result = $this->calc->getAnimalAgex($person, 0.578);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
+    foreach ($animals as $animal => $value) {   
+      $result = $this->calc->getAnimalAgex($person, $value);
+      $jubilee=$result['next_animal_age'];    
+      $delta=$result['delta'];
       while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> horse age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> horse age .<br />";
-        $delta = round($delta + (365/0.578));  
-        $jubilee = $jubilee + 1 ;    
-      }  
+          $date = date("j.n.Y",time()+$delta*60*60*24);
+          $calendar[$date].="<p><b>$person[name]</b> $jubilee"."<sup>th</sup> $animal age</p>";
+          $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> $animal age .<br />";
+          $delta = round($delta + (365/$value));  
+          $jubilee = $jubilee + 1 ;    
+      }
+    }  
 
-    //elephant
-    $result = $this->calc->getAnimalAgex($person, 1.127);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> elephant age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> elephant age .<br />";
-        $delta = round($delta + (365/1.127));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //aligator
-    $result = $this->calc->getAnimalAgex($person, 0.954);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> aligator age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> aligator age .<br />";
-        $delta = round($delta + (365/0.954));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //orangutan
-    $result = $this->calc->getAnimalAgex($person, 0.853);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> orangutan age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> orangutan age .<br />";
-        $delta = round($delta + (365/0.853));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //camel
-    $result = $this->calc->getAnimalAgex($person, 0.723);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> camel age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> camel age .<br />";
-        $delta = round($delta + (365/0.723));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //rhinoceros
-    $result = $this->calc->getAnimalAgex($person, 0.636);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> rhino age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> rhinoceros age .<br />";
-        $delta = round($delta + (365/0.636));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //shark
-    $result = $this->calc->getAnimalAgex($person, 0.462);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> shark age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> shark age .<br />";
-        $delta = round($delta + (365/0.462));  
-        $jubilee = $jubilee + 1 ;    
-      }  
-
-    //cat
-    $result = $this->calc->getAnimalAgex($person, 0.361);
-    $jubilee=$result['next_animal_age'];    
-    $delta=$result['delta'];
-      while ($delta<=$range) {
-        $date = date("j.n.Y",time()+$delta*60*60*24);
-        $calendar[$date].="<b>$person[name]</b> $jubilee"."<sup>th</sup> cat age";
-        $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> cat age .<br />";
-        $delta = round($delta + (365/0.361));  
-        $jubilee = $jubilee + 1 ;    
-      }  
    
   //celebrate round days    
     $days = $this->calc->getDaysZero($person);
@@ -767,17 +584,17 @@ $x1=++$x1 ;
           $date = date("j.n.Y",time()+$delta*60*60*24);
           if ($i==1 && $delta>0) {
             $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i milions seconds.<br />YOU ARE A MILLIONAIRE <br />";
-            $calendar[$date].="<b>$person[name]</b> $i milions seconds MILLIONAIRE!";
+            $calendar[$date].="<p><b>$person[name]</b> $i milions seconds MILLIONAIRE!</p>";
           }
           if ($i>1 && $delta>0) {
             $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate round $i milions seconds.<br />";
-            $calendar[$date].="<b>$person[name]</b> $i milions seconds";
+            $calendar[$date].="<p><b>$person[name]</b> $i milions seconds</p>";
           }
           if ($i>=50) $i=$i+50;
           if ($i==10) $i=$i+40;
           if ($i==1) $i=$i+9;
     } 
-  
+           
 
 }   // patri k celebrate
 
@@ -828,9 +645,9 @@ $x1=++$x1 ;
   
   <div class="tab calendar">
 <?php 
-$month = 12;
+$month = 2;
 $day = 1;  
-$year = 2013;
+$year = 2014;
   
 //zaciatok KALENDAR
   echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />";   
