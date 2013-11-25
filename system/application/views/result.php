@@ -122,354 +122,365 @@
     $number = count($persons)."<br />";
 //    $range=$_POST['range'];
 //    if (!$range)
-      $range = 366; // rozsah, doba pokial ma pocitat spolocne narodky a na marse
+      $range = $_POST['range']; // rozsah, doba pokial ma pocitat spolocne narodky a na marse
+      $combine = $_POST['combine'];
+      $planets = $_POST['planets'];
+      $animals = $_POST['animals'];
+      $round = $_POST['round'];  // round days, hours, minutes, seconds
+      $half = $_POST['half'];
+      $select_month = $_POST['select_month'];
       
-  echo "<br />" ;
+
   
+  list($month,$year)=explode(" ",$select_month);    
+  echo "<br />" ;
+  $range = ((mktime(0,0,0,$month+1,1,$year)) - time ())/ (60*60*24);
+
   $celebrate=array();
 	foreach ($persons as $person) {
  
     //Combine birthday       
-//kombinacie dvojice    
-$x1=0;    
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){    
-    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) ;
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $jubilee = ceil($jub) ;
-    $deltax = (($jubilee - $jub) * $days);
-    $delta = round($deltax/2) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $repeat = 0 ;
-      while (($delta+182.5*$repeat)<=$range) {
-        if ($repeat%2==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/2));
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 183 + 365.2422*($repeat-1)/2);
-          }
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday</p>";
-        $celebrate[$delta_repeat][200]="<b> $delta_repeat </b> days from now, $date, $person1[name] and $person2[name] will celebrate $jubilee"."<sup>th</sup> duo combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;    
-      }
-    $x2++;
-  }
-  $x1++; 
-}  
-
-//kombinacie trojice
-$x1=0;   
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){
-      $x3=$x2+1 ;
-      while ($x3<$number){   
-    $cmbdays = ($this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]));
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $jubilee = ceil($jub) ;
-    $deltax = (($jubilee - $jub) * $days);
-    $delta = round($deltax/3) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $person3=$persons[$x3];
-    $repeat = 0 ;
-      while (($delta+122*$repeat)<=$range) {
-        if ($repeat%3==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/3));
-          }
-        elseif ($repeat%3==1) 
-          {
-          $delta_repeat = round($delta + 122 + 365.2422*($repeat-1)/3);
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 243 + 365.2422*($repeat-2)/3);
-          }
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday</p>";
-        $celebrate[$delta_repeat][300]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name] and $person3[name] will celebrate $jubilee"."<sup>th</sup> trio combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;
+//kombinacie dvojice  
+if ($combine) {
+  $x1=0;    
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){    
+      $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) ;
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $jubilee = ceil($jub) ;
+      $deltax = (($jubilee - $jub) * $days);
+      $delta = round($deltax/2) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $repeat = 0 ;
+        while (($delta+182.5*$repeat)<=$range) {
+          if ($repeat%2==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/2));
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 183 + 365.2422*($repeat-1)/2);
+            }
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday</p>";
+          $celebrate[$delta_repeat][200]="<b> $delta_repeat </b> days from now, $date, $person1[name] and $person2[name] will celebrate $jubilee"."<sup>th</sup> duo combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;    
         }
-      $x3=++$x3 ;
-      } 
-  $x2=++$x2 ;
-  }
-$x1=++$x1 ; 
-} 
-
-//kombinacie stvorice
-$x1=0;
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){
-      $x3=$x2+1 ;
-      while ($x3<$number){
-        $x4=$x3+1 ;
-        while ($x4<$number){
-    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]);
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $nextjub = ceil($jub) ;
-    $deltax = (($nextjub - $jub) * $days);
-    $delta = round($deltax/4) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $person3=$persons[$x3];
-    $person4=$persons[$x4];
-    $repeat = 0 ;
-      while (($delta+91.3*$repeat)<=$range) {
-        if ($repeat%4==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/4));
+      $x2++;
+    }
+    $x1++; 
+  }  
+  
+  //kombinacie trojice
+  $x1=0;   
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){
+        $x3=$x2+1 ;
+        while ($x3<$number){   
+      $cmbdays = ($this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]));
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $jubilee = ceil($jub) ;
+      $deltax = (($jubilee - $jub) * $days);
+      $delta = round($deltax/3) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $person3=$persons[$x3];
+      $repeat = 0 ;
+        while (($delta+122*$repeat)<=$range) {
+          if ($repeat%3==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/3));
+            }
+          elseif ($repeat%3==1) 
+            {
+            $delta_repeat = round($delta + 122 + 365.2422*($repeat-1)/3);
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 243 + 365.2422*($repeat-2)/3);
+            }
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday</p>";
+          $celebrate[$delta_repeat][300]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name] and $person3[name] will celebrate $jubilee"."<sup>th</sup> trio combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;
           }
-        elseif ($repeat%4==1) 
-          {
-          $delta_repeat = round($delta + 91 + 365.2422*($repeat-1)/4);
-          }
-        elseif ($repeat%4==2)
-          {
-          $delta_repeat = round($delta + 183 + 365.2422*($repeat-2)/4);
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 274 + 365.2422*($repeat-3)/4);
-          }
-          
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday</p>";
-        $celebrate[$delta_repeat][400]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name] and $person4[name] will celebrate $nextjub"."<sup>th</sup> quartet combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;
-        }
-        $x4=++$x4 ;
+        $x3=++$x3 ;
         } 
-      $x3=++$x3 ;
-      } 
-  $x2=++$x2 ;
-  }
-$x1=++$x1 ; 
-}
-   
-//kombinacie patice
-$x1=0;
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){
-      $x3=$x2+1 ;
-      while ($x3<$number){
-        $x4=$x3+1 ;
-        while ($x4<$number){
-          $x5=$x4+1 ;
-          while ($x5<$number){
-    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]);
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $nextjub = ceil($jub) ;
-    $deltax = (($nextjub - $jub) * $days);
-    $delta = round($deltax/5) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $person3=$persons[$x3];
-    $person4=$persons[$x4];
-    $person5=$persons[$x5];
-    $repeat = 0 ;
-      while (($delta+73*$repeat)<=$range) {
-        if ($repeat%5==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/5));
+    $x2=++$x2 ;
+    }
+  $x1=++$x1 ; 
+  } 
+  
+  //kombinacie stvorice
+  $x1=0;
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){
+        $x3=$x2+1 ;
+        while ($x3<$number){
+          $x4=$x3+1 ;
+          while ($x4<$number){
+      $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]);
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $nextjub = ceil($jub) ;
+      $deltax = (($nextjub - $jub) * $days);
+      $delta = round($deltax/4) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $person3=$persons[$x3];
+      $person4=$persons[$x4];
+      $repeat = 0 ;
+        while (($delta+91.3*$repeat)<=$range) {
+          if ($repeat%4==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/4));
+            }
+          elseif ($repeat%4==1) 
+            {
+            $delta_repeat = round($delta + 91 + 365.2422*($repeat-1)/4);
+            }
+          elseif ($repeat%4==2)
+            {
+            $delta_repeat = round($delta + 183 + 365.2422*($repeat-2)/4);
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 274 + 365.2422*($repeat-3)/4);
+            }
+            
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday</p>";
+          $celebrate[$delta_repeat][400]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name] and $person4[name] will celebrate $nextjub"."<sup>th</sup> quartet combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;
           }
-        elseif ($repeat%5==1) 
-          {
-          $delta_repeat = round($delta + 73 + 365.2422*($repeat-1)/5);
-          }
-        elseif ($repeat%5==2)
-          {
-          $delta_repeat = round($delta + 146 + 365.2422*($repeat-2)/5);
-          }
-        elseif ($repeat%5==3)
-          {
-          $delta_repeat = round($delta + 219 + 365.2422*($repeat-3)/5);
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 292 + 365.2422*($repeat-4)/5);
-          }
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday</p>";
-        $celebrate[$delta_repeat][500]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name] and $person5[name] will celebrate $jubilee"."<sup>th</sup> quintet combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;
-        }
-          $x5=++$x5 ;
+          $x4=++$x4 ;
           } 
-        $x4=++$x4 ;
+        $x3=++$x3 ;
         } 
-      $x3=++$x3 ;
-      } 
-  $x2=++$x2 ;
+    $x2=++$x2 ;
+    }
+  $x1=++$x1 ; 
   }
-$x1=++$x1 ; 
-}
-
-//kombinacie sestice
-$x1=0;
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){
-      $x3=$x2+1 ;
-      while ($x3<$number){
-        $x4=$x3+1 ;
-        while ($x4<$number){
-          $x5=$x4+1 ;
-          while ($x5<$number){
-            $x6=$x5+1 ;
-            while ($x6<$number){
-    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]) + $this->calc->getDaysZero($persons[$x6]);
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $jubilee = ceil($jub) ;
-    $deltax = (($jubilee - $jub) * $days);
-    $delta = round($deltax/6) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $person3=$persons[$x3];
-    $person4=$persons[$x4];
-    $person5=$persons[$x5];
-    $person6=$persons[$x6];
-    $repeat = 0 ;
-      while (($delta+61*$repeat)<=$range) {
-        if ($repeat%6==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/6));
+     
+  //kombinacie patice
+  $x1=0;
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){
+        $x3=$x2+1 ;
+        while ($x3<$number){
+          $x4=$x3+1 ;
+          while ($x4<$number){
+            $x5=$x4+1 ;
+            while ($x5<$number){
+      $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]);
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $nextjub = ceil($jub) ;
+      $deltax = (($nextjub - $jub) * $days);
+      $delta = round($deltax/5) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $person3=$persons[$x3];
+      $person4=$persons[$x4];
+      $person5=$persons[$x5];
+      $repeat = 0 ;
+        while (($delta+73*$repeat)<=$range) {
+          if ($repeat%5==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/5));
+            }
+          elseif ($repeat%5==1) 
+            {
+            $delta_repeat = round($delta + 73 + 365.2422*($repeat-1)/5);
+            }
+          elseif ($repeat%5==2)
+            {
+            $delta_repeat = round($delta + 146 + 365.2422*($repeat-2)/5);
+            }
+          elseif ($repeat%5==3)
+            {
+            $delta_repeat = round($delta + 219 + 365.2422*($repeat-3)/5);
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 292 + 365.2422*($repeat-4)/5);
+            }
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday</p>";
+          $celebrate[$delta_repeat][500]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name] and $person5[name] will celebrate $jubilee"."<sup>th</sup> quintet combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;
           }
-        elseif ($repeat%6==1) 
-          {
-          $delta_repeat = round($delta + 60.83 + 365.2422*($repeat-1)/6);
-          }
-        elseif ($repeat%6==2)
-          {
-          $delta_repeat = round($delta + 121.66 + 365.2422*($repeat-2)/6);
-          }
-        elseif ($repeat%6==3)
-          {
-          $delta_repeat = round($delta + 182.49 + 365.2422*($repeat-3)/6);
-          }
-        elseif ($repeat%6==4) 
-          {
-          $delta_repeat = round($delta + 243.32 + 365.2422*($repeat-4)/6);
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 304.15 + 365.2422*($repeat-5)/6);
-          }
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday</p>";
-        $celebrate[$delta_repeat][600]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name] will celebrate $jubilee"."<sup>th</sup> sextet combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;
-        }
-            $x6=++$x6 ;
+            $x5=++$x5 ;
             } 
-          $x5=++$x5 ;
+          $x4=++$x4 ;
           } 
-        $x4=++$x4 ;
+        $x3=++$x3 ;
         } 
-      $x3=++$x3 ;
-      } 
-  $x2=++$x2 ;
+    $x2=++$x2 ;
+    }
+  $x1=++$x1 ; 
   }
-$x1=++$x1 ; 
-}
-
-// kombinacie sedem
-$x1=0;
-while ($x1<$number) {
-  $x2=$x1+1 ;
-    while ($x2<$number){
-      $x3=$x2+1 ;
-      while ($x3<$number){
-        $x4=$x3+1 ;
-        while ($x4<$number){
-          $x5=$x4+1 ;
-          while ($x5<$number){
-            $x6=$x5+1 ;
-            while ($x6<$number){
-              $x7=$x6+1 ;
-              while ($x7<$number){
-    $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]) + $this->calc->getDaysZero($persons[$x6]) + $this->calc->getDaysZero($persons[$x7]);
-    $days = 365.2422 ;
-    $jub = ($cmbdays/$days) ;
-    $jubilee = ceil($jub) ;
-    $deltax = (($jubilee - $jub) * $days);
-    $delta = round($deltax/7) ;
-    $person1=$persons[$x1];
-    $person2=$persons[$x2];
-    $person3=$persons[$x3];
-    $person4=$persons[$x4];
-    $person5=$persons[$x5];
-    $person6=$persons[$x6];
-    $person7=$persons[$x7];    
-    $repeat = 0 ;
-      while (($delta+52.1*$repeat)<=$range) {
-        if ($repeat%7==0)
-          {
-          $delta_repeat = round($delta + 365.2422*($repeat/6));
+  
+  //kombinacie sestice
+  $x1=0;
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){
+        $x3=$x2+1 ;
+        while ($x3<$number){
+          $x4=$x3+1 ;
+          while ($x4<$number){
+            $x5=$x4+1 ;
+            while ($x5<$number){
+              $x6=$x5+1 ;
+              while ($x6<$number){
+      $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]) + $this->calc->getDaysZero($persons[$x6]);
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $jubilee = ceil($jub) ;
+      $deltax = (($jubilee - $jub) * $days);
+      $delta = round($deltax/6) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $person3=$persons[$x3];
+      $person4=$persons[$x4];
+      $person5=$persons[$x5];
+      $person6=$persons[$x6];
+      $repeat = 0 ;
+        while (($delta+61*$repeat)<=$range) {
+          if ($repeat%6==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/6));
+            }
+          elseif ($repeat%6==1) 
+            {
+            $delta_repeat = round($delta + 60.83 + 365.2422*($repeat-1)/6);
+            }
+          elseif ($repeat%6==2)
+            {
+            $delta_repeat = round($delta + 121.66 + 365.2422*($repeat-2)/6);
+            }
+          elseif ($repeat%6==3)
+            {
+            $delta_repeat = round($delta + 182.49 + 365.2422*($repeat-3)/6);
+            }
+          elseif ($repeat%6==4) 
+            {
+            $delta_repeat = round($delta + 243.32 + 365.2422*($repeat-4)/6);
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 304.15 + 365.2422*($repeat-5)/6);
+            }
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday</p>";
+          $celebrate[$delta_repeat][600]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name] will celebrate $jubilee"."<sup>th</sup> sextet combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;
           }
-        elseif ($repeat%7==1) 
-          {
-          $delta_repeat = round($delta + 52.14 + 365.2422*($repeat-1)/7);
-          }
-        elseif ($repeat%7==2)
-          {
-          $delta_repeat = round($delta + 104.28 + 365.2422*($repeat-2)/7);
-          }
-        elseif ($repeat%7==3)
-          {
-          $delta_repeat = round($delta + 156.42 + 365.2422*($repeat-3)/7);
-          }
-        elseif ($repeat%7==4) 
-          {
-          $delta_repeat = round($delta + 208.56 + 365.2422*($repeat-4)/7);
-          }
-        elseif ($repeat%7==5) 
-          {
-          $delta_repeat = round($delta + 260.7 + 365.2422*($repeat-5)/7);
-          }
-        else 
-          {
-          $delta_repeat = round($delta + 312.84 + 365.2422*($repeat-6)/7);
-          }
-        $repeat = $repeat + 1 ;
-        $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-        $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday</p>";
-        $celebrate[$delta_repeat][700]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name] will celebrate $jubilee"."<sup>th</sup> septet combine birthday. <br />";
-        $jubilee = $jubilee + 1 ;
-        }
-              $x7=++$x7 ;
+              $x6=++$x6 ;
               } 
-            $x6=++$x6 ;
+            $x5=++$x5 ;
             } 
-          $x5=++$x5 ;
+          $x4=++$x4 ;
           } 
-        $x4=++$x4 ;
+        $x3=++$x3 ;
         } 
-      $x3=++$x3 ;
-      } 
-  $x2=++$x2 ;
+    $x2=++$x2 ;
+    }
+  $x1=++$x1 ; 
   }
-$x1=++$x1 ; 
-}         
-    
+  
+  // kombinacie sedem
+  $x1=0;
+  while ($x1<$number) {
+    $x2=$x1+1 ;
+      while ($x2<$number){
+        $x3=$x2+1 ;
+        while ($x3<$number){
+          $x4=$x3+1 ;
+          while ($x4<$number){
+            $x5=$x4+1 ;
+            while ($x5<$number){
+              $x6=$x5+1 ;
+              while ($x6<$number){
+                $x7=$x6+1 ;
+                while ($x7<$number){
+      $cmbdays = $this->calc->getDaysZero($persons[$x1]) + $this->calc->getDaysZero($persons[$x2]) + $this->calc->getDaysZero($persons[$x3]) + $this->calc->getDaysZero($persons[$x4]) + $this->calc->getDaysZero($persons[$x5]) + $this->calc->getDaysZero($persons[$x6]) + $this->calc->getDaysZero($persons[$x7]);
+      $days = 365.2422 ;
+      $jub = ($cmbdays/$days) ;
+      $jubilee = ceil($jub) ;
+      $deltax = (($jubilee - $jub) * $days);
+      $delta = round($deltax/7) ;
+      $person1=$persons[$x1];
+      $person2=$persons[$x2];
+      $person3=$persons[$x3];
+      $person4=$persons[$x4];
+      $person5=$persons[$x5];
+      $person6=$persons[$x6];
+      $person7=$persons[$x7];    
+      $repeat = 0 ;
+        while (($delta+52.1*$repeat)<=$range) {
+          if ($repeat%7==0)
+            {
+            $delta_repeat = round($delta + 365.2422*($repeat/6));
+            }
+          elseif ($repeat%7==1) 
+            {
+            $delta_repeat = round($delta + 52.14 + 365.2422*($repeat-1)/7);
+            }
+          elseif ($repeat%7==2)
+            {
+            $delta_repeat = round($delta + 104.28 + 365.2422*($repeat-2)/7);
+            }
+          elseif ($repeat%7==3)
+            {
+            $delta_repeat = round($delta + 156.42 + 365.2422*($repeat-3)/7);
+            }
+          elseif ($repeat%7==4) 
+            {
+            $delta_repeat = round($delta + 208.56 + 365.2422*($repeat-4)/7);
+            }
+          elseif ($repeat%7==5) 
+            {
+            $delta_repeat = round($delta + 260.7 + 365.2422*($repeat-5)/7);
+            }
+          else 
+            {
+            $delta_repeat = round($delta + 312.84 + 365.2422*($repeat-6)/7);
+            }
+          $repeat = $repeat + 1 ;
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
+          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday</p>";
+          $celebrate[$delta_repeat][700]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name] will celebrate $jubilee"."<sup>th</sup> septet combine birthday. <br />";
+          $jubilee = $jubilee + 1 ;
+          }
+                $x7=++$x7 ;
+                } 
+              $x6=++$x6 ;
+              } 
+            $x5=++$x5 ;
+            } 
+          $x4=++$x4 ;
+          } 
+        $x3=++$x3 ;
+        } 
+    $x2=++$x2 ;
+    }
+  $x1=++$x1 ; 
+  }         
+}    
     // birthday 
     $delta = $this->calc->getCelebrateDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
@@ -485,6 +496,7 @@ $x1=++$x1 ;
     $celebrate[$delta][]="<b> $delta </b> days from now, $date, $person[name] will celebrate $jubilee"."<sup>th</sup> birthday.<br />";
     
     //half birthday
+if ($half) {    
     $delta = $this->calc->getHalfBirthdayDelta($person);
     $date = date("j.n.Y",time()+$delta*60*60*24);
     $calendar[$date].="<p><b>$person[name]</b> Half Birthday</p>";
@@ -495,8 +507,10 @@ $x1=++$x1 ;
 
     else
     $celebrate[$delta][]="<b> $delta </b> days from now, $date , $person[name] will celebrate half birthday. <br />";  
-   
+}   
+
     // Planet age - pre vsetky planety
+if ($planets) {
     $planets=array("Mercury" => 87.96934,"Venus" => 224.70096,"Mars" => 686.971,
                     "Jupiter" => 4335.3545,"Saturn" => 10756.1995,"Uranus" => 30707.4896,"Neptune" => 60190);
  
@@ -512,8 +526,9 @@ $x1=++$x1 ;
         $jubilee = $jubilee + 1 ;    
       }  
     }  
-
+}
     //Animal age
+if ($animals) {
     $animals=array("dog" => 0.143,"turtle" => 2.197,"lion" => 0.419,"horse" => 0.578,"elephant" => 1.127,
                     "aligator" => 0.954,"orangutan" => 0.853,"camel" => 0.723,"rhino" => 0.636,"shark" => 0.462,"cat" => 0.361);
 
@@ -529,9 +544,11 @@ $x1=++$x1 ;
           $jubilee = $jubilee + 1 ;    
       }
     }  
+}
 
    
-  //celebrate round days    
+  //celebrate round days 
+if ($round) {
     $days = $this->calc->getDaysZero($person);
     if ($days == 0) {
       $delta = 0 ;
@@ -548,7 +565,7 @@ $x1=++$x1 ;
           if ($i>=300 && $i<1000) $i=$i+100;
           if ($i<300) $i=$i+50;
         }      
-  //celebrate round hodiny  1 000, 5 000, 10 000, ...
+  //celebrate round hours  1 000, 5 000, 10 000, ...
     $days = $this->calc->getDaysZero($person);
     $i = 1000 ;
     while ($i/(24)<($days+$range)) {
@@ -574,7 +591,6 @@ $x1=++$x1 ;
           if ($i==50000) $i=$i+50000;
           if ($i==10000) $i=$i+40000;
     } 
-  
 
    //celebrate round seconds     v milions 1, 10, 50 ...
     $days = $this->calc->getDaysZero($person);
@@ -594,7 +610,7 @@ $x1=++$x1 ;
           if ($i==10) $i=$i+40;
           if ($i==1) $i=$i+9;
     } 
-           
+}  // ukoncenie podmienky if ($round)          
 
 }   // patri k celebrate
 
@@ -645,13 +661,16 @@ $x1=++$x1 ;
   
   <div class="tab calendar">
 <?php 
-$month = 2;
+
+// list($month,$year)=explode(" ",$select_month);
+ if (!$month) {
+   $month=11;
+   $year=2013;
+ }
 $day = 1;  
-$year = 2014;
   
 //zaciatok KALENDAR
-  echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />";   
-  
+  echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />"; 
   
   $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);    // zistenie poctu dni v mesiaci
   $first_day = date("N", mktime(0, 0, 0, $month, 1, $year));
@@ -680,7 +699,8 @@ $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
           <th width=".$table_width.">Thursday</th>
           <th width=".$table_width.">Friday</th>
           <th width=".$table_width.">Saturday</th>
-          <th width=".$table_width.">Sunday</th></tr>";
+          <th width=".$table_width.">Sunday</th>
+        </tr>";
   
   //telo kalendara
   echo "<tr>" ;

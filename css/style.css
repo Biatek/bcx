@@ -55,6 +55,12 @@ table.calculator .datefield   {float:left;}
 #date-choser input    {font-size:1.2em;width:150px;}
 #date-choser select   {font-size:1.2em;width:120px;margin-left:10px;}
 
+#settings {
+  display: none;
+    
+
+}
+
 .reset            {float: left;margin-top:20px;}
 .reset a          {color:#fff;font-size:0.75em;}
 
