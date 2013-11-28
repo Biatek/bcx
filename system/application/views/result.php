@@ -166,7 +166,9 @@ if ($combine) {
             }
           $repeat = $repeat + 1 ;
           $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday</p>";
+          $txt="<p><b>$person1[name] and $person2[name]</b> $jubilee"."<sup>th</sup> duo combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))      // zaruci, ze v kalendari budu dane spol. narodky iba raz, inak sa opakuju ako je vela osob vo vypocte
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][200]="<b> $delta_repeat </b> days from now, $date, $person1[name] and $person2[name] will celebrate $jubilee"."<sup>th</sup> duo combine birthday. <br />";
           $jubilee = $jubilee + 1 ;    
         }
@@ -206,8 +208,10 @@ if ($combine) {
             $delta_repeat = round($delta + 243 + 365.2422*($repeat-2)/3);
             }
           $repeat = $repeat + 1 ;
-          $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday</p>";
+          $date = date("j.n.Y",time()+$delta_repeat*60*60*24); 
+          $txt="<p><b>$person1[name], $person2[name] and $person3[name]</b> $jubilee"."<sup>th</sup> trio combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))     
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][300]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name] and $person3[name] will celebrate $jubilee"."<sup>th</sup> trio combine birthday. <br />";
           $jubilee = $jubilee + 1 ;
           }
@@ -258,7 +262,9 @@ if ($combine) {
             
           $repeat = $repeat + 1 ;
           $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday</p>";
+          $txt="<p><b>$person1[name], $person2[name], $person3[name] and $person4[name]</b> $jubilee"."<sup>th</sup> quartet combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))      // zaruci, ze v kalendari budu dane spol. narodky iba raz, inak sa opakuju ako je vela osob vo vypocte
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][400]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name] and $person4[name] will celebrate $nextjub"."<sup>th</sup> quartet combine birthday. <br />";
           $jubilee = $jubilee + 1 ;
           }
@@ -317,7 +323,9 @@ if ($combine) {
             }
           $repeat = $repeat + 1 ;
           $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday</p>";
+          $txt="<p><b>$person1[name], $person2[name], $person3[name], $person4[name] and $person5[name]</b> $jubilee"."<sup>th</sup> quintet combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))     
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][500]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name] and $person5[name] will celebrate $jubilee"."<sup>th</sup> quintet combine birthday. <br />";
           $jubilee = $jubilee + 1 ;
           }
@@ -385,7 +393,9 @@ if ($combine) {
             }
           $repeat = $repeat + 1 ;
           $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday</p>";
+          $txt="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name]</b> $jubilee"."<sup>th</sup> sextet combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))     
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][600]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name] and $person6[name] will celebrate $jubilee"."<sup>th</sup> sextet combine birthday. <br />";
           $jubilee = $jubilee + 1 ;
           }
@@ -462,7 +472,9 @@ if ($combine) {
             }
           $repeat = $repeat + 1 ;
           $date = date("j.n.Y",time()+$delta_repeat*60*60*24);
-          $calendar[$date].="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday</p>";
+          $txt="<p><b>$person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name]</b> $jubilee"."<sup>th</sup> septet combine birthday</p>";
+          if (!strpos(" ".$calendar[$date],$txt))     
+            $calendar[$date].=$txt;
           $celebrate[$delta_repeat][700]="<b> $delta_repeat </b> days from now, $date, $person1[name], $person2[name], $person3[name], $person4[name], $person5[name], $person6[name] and $person7[name] will celebrate $jubilee"."<sup>th</sup> septet combine birthday. <br />";
           $jubilee = $jubilee + 1 ;
           }
@@ -671,6 +683,8 @@ $day = 1;
   
 //zaciatok KALENDAR
   echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />"; 
+  echo "<button formtarget=\"_blank\">Calendar setup and print</button>";
+  
   
   $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);    // zistenie poctu dni v mesiaci
   $first_day = date("N", mktime(0, 0, 0, $month, 1, $year));
@@ -690,9 +704,9 @@ if ($month + 1 > 12){ $nextM = 1; $nextY++;} else {$nextM = $month + 1;};
 $prev = "<a href='?month=".($prevM)."&year=".($prevY)."'><<</a>";
 $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
  */ 
-  echo "<table border=1 cellpadding=5 cellspacing=1>";
-  echo "<tr><th colspan=7> ".date("F Y", mktime(0, 0, 0, $month, $day, $year))."</th></tr>";
-  echo "<tr>
+  $cal="<table border=1 cellpadding=5 cellspacing=1>";
+  $cal.="<tr><th colspan=7> ".date("F Y", mktime(0, 0, 0, $month, $day, $year))."</th></tr>";
+  $cal.="<tr>
           <th width=".$table_width.">Monday</th>
           <th width=".$table_width.">Tuesday</th>
           <th width=".$table_width.">Wednesday</th>
@@ -703,14 +717,14 @@ $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
         </tr>";
   
   //telo kalendara
-  echo "<tr>" ;
+  $cal.="<tr>" ;
   // cyklus vypise prazdne bunky
   $blank_cell = 1;
   while ($blank_cell < $first_day)
-    {
-    echo "<td></td>";
+  {
+    $cal.="<td></td>";
     $blank_cell++;                         
-    }
+  }
   
   //cykly dorobia tabulku a vpisu cisla dni  
   $day_num = 1 ;
@@ -721,17 +735,21 @@ $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
           if ($day_num <= $days_in_month)  //podmienka zistuje ci je uz koniec mesiaca, ak ano da uz len prazdne bunky
           {       
               $date=date("j.n.Y",mktime(0,0,0,$month,$day_num,$year));
-              echo "<td height=$table_height valign=top> $day_num<br />$calendar[$date]</td>";   //vpise cislo dna a robi tabulku - vlastne to najdolezitejsie
+              $cal.="<td height=$table_height valign=top> $day_num<br />$calendar[$date]</td>";   //vpise cislo dna a robi tabulku - vlastne to najdolezitejsie
            }
-          else  echo "<td></td>";
+          else  $cal.="<td></td>";
       $day_num++;
     }
-    echo "</tr><tr>"; 
+    $cal.="</tr><tr>"; 
    //if ($first_day_x = 7)
    //   $day_num--;
   } 
-  echo "</tr>" ;
-  echo "</table>" ;
+  $cal.="</tr>" ;
+  $cal.="</table>" ;
+  
+  echo $cal;
+  session_start();
+  $_SESSION['cal']=$cal;
   
 //koniec KALENDAR
 

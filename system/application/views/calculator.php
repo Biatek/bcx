@@ -40,29 +40,35 @@
             }             
           ?>
           <div id="settings">
-               Range:
+              <!-- Range:
                <select name="range">
                <option value="31">1 month</option>
                <option value="183">6 months</option>
                <option value="366">1 year</option>  
                <option value="1098">3 year</option> 
-               </select>  <br />
+               </select>  <br />    -->
                Month of calendar:
                <select name="select_month" style="width:200px">
-               <option value="11 2013">November 2013</option>
-               <option value="12 2013">December 2013</option>
-               <option value="1 2014">January 2014</option>  
-               <option value="2 2014">February 2014</option> 
-               <option value="3 2014">March 2014</option>
-               <option value="4 2014">April 2014</option>
-               <option value="5 2014">May 2014</option>
-               <option value="6 2014">June 2014</option>
-               <option value="7 2014">July 2014</option>
-               <option value="8 2014">August 2014</option>
-               <option value="9 2014">September 2014</option>
-               <option value="10 2014">October 2014</option>
-               <option value="11 2014">November 2014</option>
-               <option value="12 2014">December 2014</option>
+               <?php      //vyber mesiaca
+                 $select_month=$_POST['select_month'];
+                 if ($select_month)
+                   setcookie("select_month",$select_month,$cookie_time);
+                 else
+                   $select_month=$_COOKIE['select_month'];
+                 $m = date("n");
+                 $y = date("Y");
+                 for ($i = 1; $i <= 12; $i++) {
+                   $t=mktime(0,0,0,$m,1,$y);
+                   $month_name=date("F",$t);
+                   if ($select_month=="$m $y") $s=" selected"; else $s="";
+                   echo "<option value=\"$m $y\"$s>$month_name $y</option>\n";
+                   $m++;
+                   if ($m>12){
+                    $m=1;
+                    $y++;                   
+                   } 
+                 }
+               ?> 
                </select><br />
                <input type="checkbox" name="combine"<?=$box['combine']?> /> Combine birthday<br />
                <input type="checkbox" name="planets"<?=$box['planets']?> /> Planet age<br />
