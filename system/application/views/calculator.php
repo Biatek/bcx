@@ -75,6 +75,9 @@
                <input type="checkbox" name="animals"<?=$box['animals']?> /> Animal age<br />
                <input type="checkbox" name="round" <?=$box['round']?> /> Round days, hours, minutes, seconds<br />
                <input type="checkbox" name="half" <?=$box['half']?> /> Half birthday<br />
+               
+              Filename: <input type="file" name="file" id="file" style="width:100px"><br />
+               
           </div>
   				<div id="buttons">
   				  <button class="btn btn-primary more" type="button" value="<?=lang('calc.more.title')?>"><?=lang('calc.more')?></span></button>

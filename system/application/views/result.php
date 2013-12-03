@@ -130,6 +130,21 @@
       $half = $_POST['half'];
       $select_month = $_POST['select_month'];
       
+      $allowedExts = array("gif", "jpeg", "jpg", "png");   //vlozenie obr
+      $temp = explode(".", $_FILES["file"]["name"]);
+      $extension = end($temp);
+      if ((($_FILES["file"]["type"] == "image/gif")
+      || ($_FILES["file"]["type"] == "image/jpeg")
+      || ($_FILES["file"]["type"] == "image/jpg")
+      || ($_FILES["file"]["type"] == "image/pjpeg")
+      || ($_FILES["file"]["type"] == "image/x-png")
+      || ($_FILES["file"]["type"] == "image/png"))
+      && ($_FILES["file"]["size"] < 200000)
+      && in_array($extension, $allowedExts)) {
+        move_uploaded_file($_FILES["file"]["tmp_name"],"upload_img/" . $_FILES["file"]["name"]);
+        $image_name=$_FILES["file"]["name"];
+      }
+      
 
   
   list($month,$year)=explode(" ",$select_month);    
@@ -705,6 +720,8 @@ $prev = "<a href='?month=".($prevM)."&year=".($prevY)."'><<</a>";
 $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
  */ 
   $cal="<table border=1 cellpadding=5 cellspacing=1>";
+  if ($image_name)
+    $cal.="<tr><td colspan=7><img src=\"upload_img/".$image_name."\" /></td></tr>";
   $cal.="<tr><th colspan=7> ".date("F Y", mktime(0, 0, 0, $month, $day, $year))."</th></tr>";
   $cal.="<tr>
           <th width=".$table_width.">Monday</th>
