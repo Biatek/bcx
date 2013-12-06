@@ -29,14 +29,36 @@
           <?php
             $cookie_time=time()+60*60*24*10;
             $boxes=array("combine","planets","animals","round","half");
+            $box=array();
+            $first=false;
             foreach ($boxes as $b) {
-              if ($_POST[$b]!=$_COOKIE[$b]) {
-                setcookie($b,$_POST[$b],$cookie_time);
-                $box[$b]=$_POST[$b];
-              } else {
-                $box[$b]=$_COOKIE[$b];
+              if (!isset($_COOKIE[$b])) {
+                setcookie($b,1,$cookie_time);
+                $box[$b]=" checked";
+                $first=true;
               }
-              if ($box[$b]) $box[$b]=" checked"; 
+            }
+            if (!$first) {
+              if ($_POST['settings']) {
+                foreach ($boxes as $b) {
+                  if ($_POST[$b]!=$_COOKIE[$b]) {
+                    if ($_POST[$b])
+                      $c=1;
+                    else
+                      $c=0; 
+                    setcookie($b,$c,$cookie_time);
+                    $box[$b]=$_POST[$b];
+                  } else {
+                    $box[$b]=$_COOKIE[$b];
+                  }
+                  if ($box[$b]) $box[$b]=" checked"; 
+                }
+              } else {
+                foreach ($boxes as $b) {
+                  if ($_COOKIE[$b]) $box[$b]=" checked";
+                }
+
+              }
             }             
           ?>
           <div id="settings">
@@ -70,6 +92,7 @@
                  }
                ?> 
                </select><br />
+               <input type="hidden" name="settings" value="1" />
                <input type="checkbox" name="combine"<?=$box['combine']?> /> Combine birthday<br />
                <input type="checkbox" name="planets"<?=$box['planets']?> /> Planet age<br />
                <input type="checkbox" name="animals"<?=$box['animals']?> /> Animal age<br />

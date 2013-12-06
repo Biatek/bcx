@@ -143,6 +143,18 @@
       && in_array($extension, $allowedExts)) {
         move_uploaded_file($_FILES["file"]["tmp_name"],"upload_img/" . $_FILES["file"]["name"]);
         $image_name=$_FILES["file"]["name"];
+        $filename="upload_img/".$_FILES["file"]["name"];
+        list($width, $height) = getimagesize($filename);
+        //$percent=500/$width;
+        //$newwidth = $width * $percent;
+        //$newheight = $height * $percent;
+        $newwidth=600;
+        $newheight=200;
+        $rsr_org = imagecreatefromjpeg($filename);
+        $rsr_scl = imagescale($rsr_org, $newwidth, $newheight,  IMG_BICUBIC_FIXED);
+        imagejpeg($rsr_scl, $filename);
+        imagedestroy($rsr_org);
+        imagedestroy($rsr_scl);        
       }
       
 
@@ -698,7 +710,7 @@ $day = 1;
   
 //zaciatok KALENDAR
   echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />"; 
-  echo "<button formtarget=\"_blank\">Calendar setup and print</button>";
+  echo "<button formtarget=\"_blank\" onclick=\"location.href='/print_calendar.php'\">Calendar setup and print</button>";
   
   
   $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);    // zistenie poctu dni v mesiaci
@@ -719,10 +731,10 @@ if ($month + 1 > 12){ $nextM = 1; $nextY++;} else {$nextM = $month + 1;};
 $prev = "<a href='?month=".($prevM)."&year=".($prevY)."'><<</a>";
 $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
  */ 
-  $cal="<table border=1 cellpadding=5 cellspacing=1>";
+  $cal='<table border="1" cellpadding="5" cellspacing="1" style="width:610px; height:450px">';
   if ($image_name)
-    $cal.="<tr><td colspan=7><img src=\"upload_img/".$image_name."\" /></td></tr>";
-  $cal.="<tr><th colspan=7> ".date("F Y", mktime(0, 0, 0, $month, $day, $year))."</th></tr>";
+    $cal.="<tr><td colspan=7><img src=\"upload_img/".$image_name."\" /></td></tr>";                                                    
+  $cal.="<tr><th colspan=7><h1>".date("F Y", mktime(0, 0, 0, $month, $day, $year))."</h1></th></tr>";
   $cal.="<tr>
           <th width=".$table_width.">Monday</th>
           <th width=".$table_width.">Tuesday</th>
@@ -752,7 +764,7 @@ $next = "<a href='?month=".($nextM)."&year=".($nextY)."'>>></a>";
           if ($day_num <= $days_in_month)  //podmienka zistuje ci je uz koniec mesiaca, ak ano da uz len prazdne bunky
           {       
               $date=date("j.n.Y",mktime(0,0,0,$month,$day_num,$year));
-              $cal.="<td height=$table_height valign=top> $day_num<br />$calendar[$date]</td>";   //vpise cislo dna a robi tabulku - vlastne to najdolezitejsie
+              $cal.="<td height=$table_height valign=top><div style=\"width:100%;background:#cccccc;\">$day_num</div>$calendar[$date]</td>";   //vpise cislo dna a robi tabulku - vlastne to najdolezitejsie
            }
           else  $cal.="<td></td>";
       $day_num++;

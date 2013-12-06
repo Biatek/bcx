@@ -36,6 +36,16 @@ if ((($_FILES["file"]["type"] == "image/gif")
       move_uploaded_file($_FILES["file"]["tmp_name"],
       "upload_img/" . $_FILES["file"]["name"]);
       echo "Stored in: " . "upload_img/" . $_FILES["file"]["name"];
+      $filename="upload_img/".$_FILES["file"]["name"];
+      list($width, $height) = getimagesize($filename);
+      $percent=500/$width;
+      $newwidth = $width * $percent;
+      $newheight = $height * $percent;
+      $rsr_org = imagecreatefromjpeg($filename);
+      $rsr_scl = imagescale($rsr_org, $newwidth, $newheight,  IMG_BICUBIC_FIXED);
+      imagejpeg($rsr_scl, "upload_img/imagebfb.jpg");
+      imagedestroy($rsr_org);
+      imagedestroy($rsr_scl);
       }
     }
   }
