@@ -151,7 +151,9 @@
         $newwidth=600;
         $newheight=200;
         $rsr_org = imagecreatefromjpeg($filename);
-        $rsr_scl = imagescale($rsr_org, $newwidth, $newheight,  IMG_BICUBIC_FIXED);
+        $rsr_scl = imagecreatetruecolor($newwidth, $newheight);
+        imagecopyresampled($rsr_scl, $rsr_org, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        //$rsr_scl = imagescale($rsr_org, $newwidth, $newheight,  IMG_BICUBIC_FIXED);          zapoznamkovane, lebo nevunguje vo WS, PHP5.2
         imagejpeg($rsr_scl, $filename);
         imagedestroy($rsr_org);
         imagedestroy($rsr_scl);        
