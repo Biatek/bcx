@@ -1,6 +1,7 @@
  <?php
   $msie=false;
   if (strpos($_SERVER['HTTP_USER_AGENT'],"MSIE")) $msie=true;
+  if (strpos($_SERVER['HTTP_USER_AGENT'],"Firefox")) $msie=true;
   if ($msie) {
    require_once "header.php";
    echo "<h1 style=\"color:black\">Choose a person!</h1>\n";

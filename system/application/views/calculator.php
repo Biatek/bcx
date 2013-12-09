@@ -103,7 +103,7 @@
                
           </div>
   				<div id="buttons">
-  				  <button class="btn btn-primary more" type="button" value="<?=lang('calc.more.title')?>"><?=lang('calc.more')?></span></button>
+  				  <button class="btn btn-primary more" type="button" value="<?=lang('calc.more.title')?>"><?=lang('calc.more')?></button>
   					<button class="btn btn-danger btn-large calculate" name="submit" type="submit"><span title="<?=lang('calc.calculate.title')?>"><?=lang('calc.calculate')?></span></button>
   				</div>
   				<div class="reset">

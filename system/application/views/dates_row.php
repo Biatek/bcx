@@ -11,7 +11,7 @@
 	<div class="datefield"><div class="title"><?=lang('calc.year'); ?></div>
 	<?=form_dropdown('year['.$i.']', $years, isset($selected['year']) ? $selected['year'] : NULL)?></div></div>
 <?php
- if (strpos($_SERVER['HTTP_USER_AGENT'],"MSIE")) {
+ if ((strpos($_SERVER['HTTP_USER_AGENT'],"MSIE")) || (strpos($_SERVER['HTTP_USER_AGENT'],"Firefox"))) {
 ?>
    <a href="#" onclick="javascript:window.open('<?php print site_url().'/osobnost/popup/'.$i; ?>','_blank','height=600,width=600, status=yes,toolbar=no,menubar=no,location=no')">
    <img src="<?=base_url()?>/css/images/star.png" alt="<?=lang('calc.star.alt')?>" title="<?=lang('calc.star.alt')?>" /></a> 
