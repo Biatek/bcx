@@ -5,7 +5,7 @@ class Osobnost extends Controller {
 	function Osobnost()
 	{
 		parent::Controller();
-		date_default_timezone_set('Europe/London');
+		date_default_timezone_set('Europe/Bratislava');
 		$this->lang->load('calc');
 		$this->lang->load('master');
 		$this->lang->load('result');
