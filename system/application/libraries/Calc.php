@@ -213,6 +213,16 @@ class Calc {
     return $path ;
   }
   
+  function getSillyNickname ($date) {
+    $month = array("Icy", "Action", "Flying", "Silly", "Brainy", "Grumpy", "Super", "Speedy", "Smiling", "Spicy", "Shoeless", "Magical");
+    $day = array("Hipo", "Lamb", "Chocolate", "Tommato", "Chocolate", "Tommato", "T-pot", "Superhero", "Cactus", "Carrot", "Brain", "Star", "Sausage", "Troll", "Dragon", "Bananna", "Moule", "Flash", "Fairy", "Banny", "Monkey", "Monster", "Clown", "Sweetheart", "Sock", "Avatar", "Alien", "Angel", "Ghost", "xxx6", "xxx7");
+    $t=$this->_getTimestamp($date);
+    $d=date("j",$t)-1;
+    $m=date("n",$t)-1;
+    $sillynickname = $month[$m]." ".$day[$d];
+    return $sillynickname ;
+  }
+  
   
 	function getAnimalBirthday($date, $ratio = 1) {
 		$age = ($this->_getNow() - $this->_getTimestamp($date))/(60*60*24*365.2422);

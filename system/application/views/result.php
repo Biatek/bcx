@@ -34,7 +34,9 @@
 
 		  <?php foreach ($persons as $person) { ?>
 				<p class="person">
-					<strong><?=$person['name']?></strong> <?=lang('result.is')?> <?=$this->calc->getYears($person)?> <?=lang('result.years')?><?=lang('result.old')?><br />
+					<strong><?=$person['name']?></strong>
+          <?php echo "silly nickname is ".$this->calc->getSillyNickname($person); ?> <br />
+          <?=lang('result.is')?> <?=$this->calc->getYears($person)?> <?=lang('result.years')?><?=lang('result.old')?><br />
 					<?=lang('result.or')?> <?=$this->calc->getMonths($person)?> <?=lang('result.months')?>  <br />  
 		      <?=lang('result.or')?> <?=$this->calc->getWeeks($person)?> <?=lang('result.weeks')?>  <br /> 
 		      <?=lang('result.or')?> <?=$this->calc->getDays($person)?> <?=lang('result.days')?><?=lang('result.old')?>  <br />
