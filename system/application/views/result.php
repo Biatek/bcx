@@ -3,8 +3,8 @@
 	<li class="birthday active"><a href="#"><?=lang('tabs.birthday')?></a></li>
 <!--	<li class="animals"><a href="#"><?=lang('tabs.animals')?></a></li>
 	<li class="planetes"><a href="#"><?=lang('tabs.planetes')?></a></li>   --!>
-  <li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?></a></li>
-  <li class="calendar"><a href="#">Calendar</a></li>
+  <li class="celebratenow"><a href="#"><?=lang('tabs.celebratenow')?><sup><font color="red"><i>NEW</i></font></sup></a></li>
+  <li class="calendar"><a href="#">Calendar<sup><font color="red"><i>Beta</i></font></sup></a></li>
 </ul>
 <div class="result">
 	<div class="tab birthday">
@@ -161,10 +161,12 @@
         imagedestroy($rsr_scl);        
       }
       
-
-  
+echo "<b>If you want to find something to celebrate every day, lets calculate with 7 or more people. <br /> 
+      If you do not want a list of all celebrations change it in the Settings.</b> <br /> 
+      <br />";
+      
   list($month,$year)=explode(" ",$select_month);    
-  echo "<br />" ;
+
   $range = ((mktime(0,0,0,$month+1,1,$year)) - time ())/ (60*60*24);
 
   $celebrate=array();
@@ -172,6 +174,8 @@
  
     //Combine birthday       
 //kombinacie dvojice  
+      
+      
 if ($combine) {
   $x1=0;    
   while ($x1<$number) {
@@ -668,7 +672,7 @@ if ($round) {
   }  
   
 
-  
+/* Petiarov povodny kod pre Celebrate NOW  
 	   $now = array();
 	   foreach ($persons as $person) {
 	     $half = $this->calc->getHalfBirthday($person); 
@@ -688,7 +692,7 @@ if ($round) {
     	   'name' => $person['name'],
   	   );
 	   }
-     
+
 	   foreach ($now as &$person) {
      //var_dump ($person) ;
            print $result['days'] ;
@@ -698,7 +702,9 @@ if ($round) {
   	     print $this->load->view('now/'.$key, array('name' => $person['name'], 'date' => $date));
   	   }
   	   print '</ul>';
-	   }    
+	   }  
+*/
+       
 	 ?>
   </div>
   
@@ -713,8 +719,9 @@ if ($round) {
 $day = 1;  
   
 //zaciatok KALENDAR
-  echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />"; 
-  echo "<button formtarget=\"_blank\" onclick=\"location.href='/print_calendar.php'\">Calendar setup and print</button>";
+  echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />";   
+  echo "If you want change the month of calendar, change it in Settings.<br />" ;
+  //echo "<button formtarget=\"_blank\" onclick=\"location.href='/print_calendar.php'\">Calendar setup and print</button>"; 
   
   
   $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);    // zistenie poctu dni v mesiaci
