@@ -15,7 +15,7 @@
 		<!-- iphone 4 -->
 		<link rel="stylesheet" type="text/css" media="only screen and (-webkit-min-device-pixel-ratio : 1.5),only screen and (min-device-pixel-ratio : 1.5)" href="<?=base_url()?>css/small.css" />
 		<!-- jQuery !-->
-		<script type="text/javascript" src="<?=base_url()?>js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/jquery.easing.1.3.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>ckeditor/ckeditor.js"></script>

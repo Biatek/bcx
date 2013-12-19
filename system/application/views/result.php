@@ -721,7 +721,7 @@ $day = 1;
 //zaciatok KALENDAR
   echo "<b> CALENDAR  for " . date("F Y", mktime(0, 0, 0, $month, $day, $year))."</b><br />";   
   echo "If you want change the month of calendar, change it in Settings.<br />" ;
-  //echo "<button formtarget=\"_blank\" onclick=\"location.href='/print_calendar.php'\">Calendar setup and print</button>"; 
+  echo "<button formtarget=\"_blank\" onclick=\"location.href='/print_calendar.php'\">Calendar setup and print</button>"; 
   
   
   $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);    // zistenie poctu dni v mesiaci
